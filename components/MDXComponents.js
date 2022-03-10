@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import {
     Box,
     Alert,
@@ -9,7 +8,6 @@ import {
     Divider,
     useColorMode
 } from '@chakra-ui/react';
-import { jsx } from '@emotion/react'
 import NextLink from 'next/link'
 
 export const CustomLink = (props) => {

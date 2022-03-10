@@ -3,10 +3,16 @@ import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import StackWithTitleWrapper from './StackWithTitleWrapper'
 import { CheckCircleIcon } from '@chakra-ui/icons'
+import { primaryDarkColor } from '../styles/theme'
 
 const colorSecondary = {
     light: 'gray.600',
     dark: '#8892b0'
+}
+
+const titleColor = {
+    light: 'gray.600',
+    dark: '#ccd6f6'
 }
 
 const ExperienceData = [
@@ -85,7 +91,7 @@ const ExperienceData = [
     },
 ]
 
-const LeftPane = styled.div(({ active }) => `
+const LeftPane = styled.div(({ active, colorMode }) => `
     height: 46px;
     text-align: left;
     padding-left: ${active ? '23px' : '24px'};
@@ -96,14 +102,14 @@ const LeftPane = styled.div(({ active }) => `
     max-width: 180px;
     margin-left: ${active && '-3px'};
     background: ${active && 'rgba(255,255,255,0.16)'};
-    border-left: ${active && '4px solid #64ffda'};
+    border-left: ${active && `4px solid ${colorMode === 'light' ? 'gray' : primaryDarkColor}`};
     font-weight: ${active && '600'};
 
     &:hover{
         cursor: pointer;
         background: rgba(255,255,255,0.16);
         color: white;
-        border-left: 4px solid #64ffda;
+        border-left: ${`4px solid ${colorMode === 'light' ? 'gray' : primaryDarkColor}`};
         padding-left: 23px;
         margin-left: -3px;
         transition: unset;
@@ -121,18 +127,23 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
 
     return <StackWithTitleWrapper id={id} sectionIndex={sectionIndex} sectionTitle={sectionTitle}>
         <Grid width="100%" minH='500px' templateColumns='repeat(5, 1fr)' pt={12}>
-            <GridItem colSpan={1} width="200px" height='fit-content' borderLeft="2px solid #233554">
+            <GridItem
+                colSpan={1}
+                width="200px"
+                height='fit-content'
+                borderLeft={`2px solid ${colorMode === 'light' ? 'lightgray' : '#233554'}`}
+            >
                 {
-                    ExperienceData.map((data) => <LeftPane key={data.key} onClick={() => setActive(data)} active={active.key === data.key}>
-                        <Text color={active.key === data.key ? '#64ffda' : colorSecondary[colorMode]}>{data.company}</Text>
+                    ExperienceData.map((data) => <LeftPane key={data.key} onClick={() => setActive(data)} active={active.key === data.key} colorMode={colorMode}>
+                        <Text color={active.key === data.key ? colorMode === 'light' ? 'gray.700' : 'primary' : colorSecondary[colorMode]}>{data.company}</Text>
                     </LeftPane>)
                 }
             </GridItem>
             <GridItem colSpan={4} width="100%" minH='80px'>
-                <Heading as="h3" size="lg" color="#ccd6f6">
+                <Heading as="h3" size="lg" color={titleColor[colorMode]}>
                     {active.designation}
-                    <Text as='span' color='primary'>&nbsp;@&nbsp;</Text>
-                    <Link color='primary' href={active.link}>
+                    <Text as='span' color={colorMode === 'light' ? 'gray.700' : 'primary'}>&nbsp;@&nbsp;</Text>
+                    <Link color={colorMode === 'light' ? 'gray.700' : 'primary'} href={active.link}>
                         {active.company}
                     </Link>
                 </Heading>
@@ -141,7 +152,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
                 <List spacing={3}>
                     {
                         active.roleDescription.map((data, index) => <ListItem key={index} color={colorSecondary[colorMode]}>
-                            <ListIcon as={CheckCircleIcon} color='primary' />
+                            <ListIcon as={CheckCircleIcon} color={colorMode === 'light' ? 'gray.700' : 'primary'} />
                             {data}
                         </ListItem>)
                     }

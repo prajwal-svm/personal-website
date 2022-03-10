@@ -4,6 +4,7 @@ import StackWithTitleWrapper from './StackWithTitleWrapper'
 
 import emailjs from 'emailjs-com'
 import { init } from '@emailjs/browser';
+import { primaryDarkColor } from '../styles/theme';
 
 const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLTE_ID;
@@ -107,11 +108,56 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
             my inbox is always open. I&lsquo;d like to know who you are and how you ended up on this page! Follow me on the below mentioned handles or
             if you have a question or just want to say hi use the below form, I&lsquo;ll try my best to get back to you!
         </Text>
-        <Input value={name} borderColor="#233554" variant="outline" size='lg' type='text' placeholder='Your name' onChange={e => setName(e.target.value)} isRequired required />
-        <Input value={email} borderColor="#233554" variant="outline" size='lg' type='email' placeholder='Your email' onChange={e => setEmail(e.target.value)} isRequired required />
-        <Input value={subject} borderColor="#233554" variant="outline" size='lg' type='text' placeholder='Subject' onChange={e => setSubject(e.target.value)} />
-        <Textarea value={message} borderColor="#233554" variant="outline" size='lg' placeholder='Your Message' resize='none' onChange={e => setMessage(e.target.value)} isRequired required />
-        <Button isLoading={isLoading} loadingText='Sending...' size='lg' variant='outline' color='primary' onClick={handleSubmit}>Send</Button>
+        <Input
+            _placeholder={{ color: colorMode === 'light' ? 'gray.500' : 'gray.500' }}
+            value={name}
+            borderColor={colorMode === 'light' ? 'lightgray' : '#233554'}
+            variant="outline"
+            size='lg'
+            type='text'
+            placeholder='Your name'
+            onChange={e => setName(e.target.value)}
+        />
+        <Input
+            _placeholder={{ color: colorMode === 'light' ? 'gray.500' : 'gray.500' }}
+            value={email}
+            borderColor={colorMode === 'light' ? 'lightgray' : '#233554'}
+            variant="outline"
+            size='lg'
+            type='email'
+            placeholder='Your email'
+            onChange={e => setEmail(e.target.value)}
+        />
+        <Input
+            _placeholder={{ color: colorMode === 'light' ? 'gray.500' : 'gray.500' }}
+            value={subject}
+            borderColor={colorMode === 'light' ? 'lightgray' : '#233554'}
+            variant="outline"
+            size='lg'
+            type='text'
+            placeholder='Subject'
+            onChange={e => setSubject(e.target.value)}
+        />
+        <Textarea
+            _placeholder={{ color: 'gray.500' }}
+            value={message}
+            borderColor={colorMode === 'light' ? 'lightgray' : '#233554'}
+            variant="outline"
+            size='lg'
+            placeholder='Your Message'
+            resize='none'
+            onChange={e => setMessage(e.target.value)}
+        />
+        <Button
+            borderColor={colorMode === 'light' ? 'purple.500' : 'initial'}
+            isLoading={isLoading}
+            loadingText='Sending...'
+            size='lg'
+            color={colorMode === 'light' ? 'gray.700' : primaryDarkColor}
+            onClick={handleSubmit}
+        >
+            Send
+        </Button>
     </StackWithTitleWrapper>
 }
 

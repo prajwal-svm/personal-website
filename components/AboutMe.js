@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import StackWithTitleWrapper from './StackWithTitleWrapper'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { primaryDarkColor } from '../styles/theme'
 
 
 const colorSecondary = {
@@ -12,7 +13,7 @@ const colorSecondary = {
 
 const Skills = [
     'Programming Languages - JavaScript, TypeScript, Python, C++, Go',
-    'Frontend - RecactJS, NextJS',
+    'Frontend - ReactJS, NextJS',
     'Backend - NodeJS, ExpressJS',
     'Databases - SQL, MongoDB, Redis, Elastic Search',
     'Build Tools - Webpack, Snowpack, Gulp',
@@ -37,7 +38,7 @@ const StyledBox = styled(Box)`
         width: 250px;
         height: 250px;
         background: transparent;
-        border: 10px double #64ffda;
+        border: ${props => props.colorMode === 'light' ? '10px double gray' : `10px double ${primaryDarkColor}`};
         right: 0;
         margin-top: 40px;
         margin-right: 0px;
@@ -79,7 +80,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
                 </Text>
             </GridItem>
             <GridItem colSpan={2} display='flex' alignItems='center' justifyContent='center' position='relative'>
-                <StyledBox pr="10px">
+                <StyledBox pr="10px" colorMode={colorMode}>
                     <Image boxSize='250px' src={process.env.NEXT_PUBLIC_ABOUT_IMAGE} alt='Prajwal S Venktesh' />
                 </StyledBox>
             </GridItem>
@@ -88,7 +89,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
                 <List spacing={3}>
                     {
                         Skills.map((skill, index) => <ListItem key={index} display="flex" alignItems='center' flexWrap='nowrap'>
-                            <ListIcon as={ArrowForwardIcon} color='primary' />
+                            <ListIcon as={ArrowForwardIcon} color={colorMode === 'light' ? 'gray.700' : primaryDarkColor} />
                             <Text fontSize='lg' color={colorSecondary[colorMode]}>{skill}</Text>
                         </ListItem>)
                     }

@@ -8,8 +8,10 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import styled from '@emotion/styled'
+import DarkModeSwitch from './DarkModeSwitch'
 
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
+import { primaryDarkColor } from '../styles/theme'
 
 const Links = [
     {
@@ -40,7 +42,7 @@ const Links = [
 
 const Container = ({ children }) => {
     const { colorMode } = useColorMode()
-    const router = useRouter();
+    // const router = useRouter();
 
     const bgColor = {
         light: 'white',
@@ -88,18 +90,26 @@ const Container = ({ children }) => {
                 mx="auto"
             >
                 <NextLink href="/" passHref>
-                    <Avatar bg='primary' border="2px solid lightseagreen" size='lg' name='Prajwal SV' src={process.env.NEXT_PUBLIC_AVATAR} />
+                    <Avatar bg='primary' border={`2px solid ${colorMode === 'light' ? 'black' : primaryDarkColor}`} size='lg' name='Prajwal SV' src={process.env.NEXT_PUBLIC_AVATAR} />
                 </NextLink>
                 <FlexBox >
                     {
                         Links.map((link, index) => (<NextLink key={index} href={link.href} passHref>
-                            <Button isActive={router.asPath === link.href} as="a" variant="ghost" mx={1} p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>
+                            <Button
+                                // isActive={router.asPath === link.href}
+                                as="a"
+                                variant="ghost"
+                                color={color[colorMode]}
+                                mx={1}
+                                p={[1, 2, 4]}
+                                _hover={{ backgroundColor: navHoverBg[colorMode] }}
+                            >
                                 {link.title}
                             </Button>
                         </NextLink>))
                     }
                 </FlexBox>
-                {/* <DarkModeSwitch /> */}
+                <DarkModeSwitch />
             </StickyNav >
             <Flex
                 as="main"
