@@ -40,7 +40,12 @@ const buttonVariant = {
 const Home = () => {
     const { colorMode } = useColorMode()
 
-    const handleDownloadResume = () => window.open(process.env.NEXT_PUBLIC_RESUME, '_blank')
+    const handleDownloadResume = () => {
+        window.splitbee.track("Button Click", {
+            type: "Resume"
+        })
+        window.open(process.env.NEXT_PUBLIC_RESUME, '_blank')
+    }
 
     return <Stack
         as='main'

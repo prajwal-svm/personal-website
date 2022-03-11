@@ -3,6 +3,19 @@ import { GoogleFonts } from 'next-google-fonts'
 import { ColorModeScript } from "@chakra-ui/react"
 
 export default class MyDocument extends NextDocument {
+
+    handleState() {
+        window.splitbee.track("init | terminate")
+    }
+
+    componentDidMount() {
+        window.addEventListener('load', this.handleState)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('load', this.handleState)
+    }
+
     render() {
         return (
             <Html lang="en">
@@ -10,6 +23,7 @@ export default class MyDocument extends NextDocument {
                 <Head>
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
+                    <script async src="https://cdn.splitbee.io/sb.js"></script>
                 </Head>
                 <body>
                     <ColorModeScript />
