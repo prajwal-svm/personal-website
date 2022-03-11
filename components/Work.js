@@ -47,12 +47,13 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
     const handleViewMore = () => window.open('https://github.com/Prajwal-S-Venkatesh?tab=repositories', '_blank')
 
     return <StackWithTitleWrapper id={id} sectionIndex={sectionIndex} sectionTitle={sectionTitle}>
-        <Grid w='100%' templateColumns='repeat(1, 1fr)' gap={6}>
+        <Grid w='100%' h='100%' templateColumns='repeat(1, 1fr)' gap={6}>
             {
                 ProjectsData.map((project, index) => <GridItem
                     key={index}
                     w='100%'
-                    minH='400'
+                    minH={['600', '550', '450', '400']}
+                    h='max-content'
                     boxShadow='xl'
                     rounded='md'
                     backgroundImage={project.imgURI}

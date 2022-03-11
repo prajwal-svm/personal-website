@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Heading, Link, List, ListIcon, ListItem, Tag, Text, useColorMode } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Heading, Link, List, ListIcon, ListItem, Tab, TabList, TabPanel, TabPanels, Tabs, Tag, Text, useColorMode } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import StackWithTitleWrapper from './StackWithTitleWrapper'
@@ -125,21 +125,9 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
     const { colorMode } = useColorMode()
     const [active, setActive] = useState(ExperienceData[0])
 
-    return <StackWithTitleWrapper id={id} sectionIndex={sectionIndex} sectionTitle={sectionTitle}>
-        <Grid width="100%" minH='500px' templateColumns='repeat(5, 1fr)' pt={12}>
-            <GridItem
-                colSpan={1}
-                width="200px"
-                height='fit-content'
-                borderLeft={`2px solid ${colorMode === 'light' ? 'lightgray' : '#233554'}`}
-            >
-                {
-                    ExperienceData.map((data) => <LeftPane key={data.key} onClick={() => setActive(data)} active={active.key === data.key} colorMode={colorMode}>
-                        <Text color={active.key === data.key ? colorMode === 'light' ? 'gray.700' : 'primary' : colorSecondary[colorMode]}>{data.company}</Text>
-                    </LeftPane>)
-                }
-            </GridItem>
-            <GridItem colSpan={4} width="100%" minH='80px'>
+    function ActiveContent({ active }) {
+        return (
+            <>
                 <Heading as="h3" size="lg" color={titleColor[colorMode]}>
                     {active.designation}
                     <Text as='span' color={colorMode === 'light' ? 'gray.700' : 'primary'}>&nbsp;@&nbsp;</Text>
@@ -164,9 +152,60 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
                         active.skills.map((skill, index) => <Tag key={index} mr={4} mt={4}>{skill}</Tag>)
                     }
                 </Box>
+            </>
+        )
+    }
 
+    function DataTabs({ data, colorMode }) {
+        return (
+            <Tabs display={['block', 'block', 'block', 'none']} width='100%' colorScheme={colorMode === 'light' ? 'black' : 'teal'}>
+                <TabList
+                    height='20'
+                    fontWeight={600}
+                    display='flex'
+                    flexDirection='row'
+                    overflowX='scroll'
+                    overflowY='hidden'
+                >
+                    {data.map((tab, index) => (
+                        <Tab fontSize='xl' color w='100%' whiteSpace='nowrap' key={index}>
+                            {tab.company}
+                        </Tab>
+                    ))}
+                </TabList>
+                <TabPanels overflowY='scroll'>
+                    {data.map((tab, index) => (
+                        <TabPanel p={4} key={index}>
+                            <ActiveContent active={tab} />
+                        </TabPanel>
+                    ))}
+                </TabPanels>
+            </Tabs>
+        )
+    }
+
+    return <StackWithTitleWrapper id={id} sectionIndex={sectionIndex} sectionTitle={sectionTitle}>
+        <Grid display={['none', 'none', 'none', 'grid']} width="100%" minH='500px' templateColumns='repeat(5, 1fr)' pt={12}>
+            <GridItem
+                colSpan={1}
+                width="200px"
+                height='fit-content'
+                borderLeft={`2px solid ${colorMode === 'light' ? 'lightgray' : '#233554'}`}
+            >
+                {
+                    ExperienceData.map((data) => <LeftPane key={data.key} onClick={() => setActive(data)} active={active.key === data.key} colorMode={colorMode}>
+                        <Text color={active.key === data.key ? colorMode === 'light' ? 'gray.700' : 'primary' : colorSecondary[colorMode]}>{data.company}</Text>
+                    </LeftPane>)
+                }
+            </GridItem>
+            <GridItem colSpan={4} width="100%" minH='80px'>
+                <ActiveContent active={active} />
             </GridItem>
         </Grid>
+
+
+        <DataTabs data={ExperienceData} colorMode={colorMode} />
+
     </StackWithTitleWrapper >
 }
 

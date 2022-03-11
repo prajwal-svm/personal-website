@@ -68,7 +68,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
             templateColumns='repeat(5, 1fr)'
             gap={4}
         >
-            <GridItem colSpan={3} >
+            <GridItem colSpan={[5, 5, 5, 3]} >
                 <Text color={colorSecondary[colorMode]} fontSize='xl' mb={2} textAlign='justify'>
                     Hey there! I&lsquo;m a Software Engineer based out of Bengaluru, India, with ~3 years of experience in building scalable applications with exceptional digital experiences.
                     I&lsquo;m an effective and driven software engineering professional,
@@ -79,7 +79,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
                     I&lsquo;ve been fascinated about Open Source Projects since the inception of my coding journey.
                 </Text>
             </GridItem>
-            <GridItem colSpan={2} display='flex' alignItems='center' justifyContent='center' position='relative'>
+            <GridItem display={['none', 'none', 'none', 'flex']} colSpan={[0, 0, 0, 2]} alignItems='center' justifyContent='center' position='relative'>
                 <StyledBox pr="10px" colorMode={colorMode}>
                     <Image boxSize='250px' src={process.env.NEXT_PUBLIC_ABOUT_IMAGE} alt='Prajwal S Venktesh' />
                 </StyledBox>

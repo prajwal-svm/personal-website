@@ -42,11 +42,12 @@ export default function Blog({ posts }) {
                 <Stack
                     as="main"
                     spacing={8}
-                    justifyContent="center"
+                    justifyContent="start"
                     alignItems="flex-start"
                     m="0 auto 4rem auto"
                     maxWidth="700px"
                     w='100%'
+                    minH='calc(100vh - 340px)'
                 >
                     <Flex
                         flexDirection="column"
@@ -56,13 +57,14 @@ export default function Blog({ posts }) {
                         w='100%'
                         px={4}
                     >
-                        {/* <Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
-                            Blog ({posts.length} posts)
-                        </Heading> */}
+                        <Text mb={8} as="p" fontSize="xl" color={headingColor[colorMode]}>
+                            Welcome to my blog! Here I post about design, tech, finance, life experiences &amp; much much more.
+                            Make sure to visit my blog often, I&lsquo;ll soon be adding subscribe feature.
+                        </Text>
                         <InputGroup mb={16} mr={4} w="100%">
                             <Input
-                                aria-label="Search by title"
-                                placeholder="Search by title"
+                                aria-label={`Search ${posts.length} posts by title`}
+                                placeholder={`Search ${posts.length} posts by title`}
                                 borderColor="#233554" variant="outline" size='md' type='text'
                                 onChange={(e) => setSearchValue(e.target.value)}
                             />

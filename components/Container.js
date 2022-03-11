@@ -5,6 +5,11 @@ import {
     Flex,
     Box,
     Avatar,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    IconButton,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import styled from '@emotion/styled'
@@ -12,36 +17,46 @@ import DarkModeSwitch from './DarkModeSwitch'
 
 // import { useRouter } from "next/router";
 import { primaryDarkColor } from '../styles/theme'
+import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { FaBusinessTime, FaHome, FaUser } from 'react-icons/fa'
+import { MdComputer, MdOutlineEmail, MdWeb } from 'react-icons/md'
+import Footer from './Footer'
 
 const Links = [
     {
         title: 'Home',
-        href: '/'
+        href: '/',
+        icon: <FaHome />
     },
     {
         title: 'About',
-        href: '/#about'
+        href: '/#about',
+        icon: <FaUser />
     },
     {
         title: 'Experience',
-        href: '/#experience'
+        href: '/#experience',
+        icon: <FaBusinessTime />
     },
     {
         title: 'Work',
-        href: '/#work'
+        href: '/#work',
+        icon: <MdComputer />
     },
     {
         title: 'Contact',
-        href: '/#contact'
+        href: '/#contact',
+        icon: <MdOutlineEmail />
     },
     {
         title: 'Blog',
-        href: '/blog'
+        href: '/blog',
+        icon: <MdWeb />
     },
 ]
 
 const Container = ({ children }) => {
-    const { colorMode } = useColorMode()
+    const { colorMode, toggleColorMode } = useColorMode()
     // const router = useRouter();
 
     const bgColor = {
@@ -83,7 +98,7 @@ const Container = ({ children }) => {
                 width="100%"
                 bg={bgColor[colorMode]}
                 as="nav"
-                px={[2, 6, 6]}
+                px={[0, 6, 6]}
                 py={2}
                 mt={8}
                 mb={[0, 0, 8]}
@@ -92,7 +107,7 @@ const Container = ({ children }) => {
                 <NextLink href="/" passHref>
                     <Avatar bg='primary' border={`2px solid ${colorMode === 'light' ? 'black' : primaryDarkColor}`} size='lg' name='Prajwal SV' src={process.env.NEXT_PUBLIC_AVATAR} />
                 </NextLink>
-                <FlexBox >
+                <FlexBox display={['none', 'none', 'none', 'block']}>
                     {
                         Links.map((link, index) => (<NextLink key={index} href={link.href} passHref>
                             <Button
@@ -110,6 +125,32 @@ const Container = ({ children }) => {
                     }
                 </FlexBox>
                 <DarkModeSwitch />
+
+                <Box display={['block', 'block', 'block', 'none']}>
+                    <Menu>
+                        <MenuButton
+                            as={IconButton}
+                            aria-label='nav'
+                            icon={<HamburgerIcon />}
+                            variant='outline'
+                            color={color[colorMode]}
+                        />
+                        <MenuList>
+                            {Links.map((link, index) => (<NextLink key={index} href={link.href} passHref>
+                                <MenuItem icon={link.icon} color={color[colorMode]}>
+                                    {link.title}
+                                </MenuItem>
+                            </NextLink>))}
+                            <MenuItem
+                                color={color[colorMode]}
+                                icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
+                                onClick={toggleColorMode}
+                            >
+                                Toggle Theme
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
+                </Box>
             </StickyNav >
             <Flex
                 as="main"
@@ -122,6 +163,7 @@ const Container = ({ children }) => {
             >
                 {children}
             </Flex>
+            <Footer />
         </>
     )
 }

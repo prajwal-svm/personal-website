@@ -17,10 +17,12 @@ const colors = {
 }
 
 const breakpoints = createBreakpoints({
-    sm: "40em",
-    md: "52em",
-    lg: "64em",
-    lg: "62em",
+    xs: '20em', // 320px => 1em = 16px
+    sm: '30em',
+    md: '48em',
+    lg: '62em',
+    xl: '80em',
+    '2xl': '96em',
 })
 
 
