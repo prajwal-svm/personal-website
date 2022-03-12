@@ -1,10 +1,11 @@
 import { Button, Input, Text, Textarea, useColorMode, useToast } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import StackWithTitleWrapper from './StackWithTitleWrapper'
 
 import emailjs from 'emailjs-com'
 import { init } from '@emailjs/browser';
 import { primaryDarkColor } from '../styles/theme';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLTE_ID;
@@ -26,6 +27,9 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
     const [message, setMessage] = useState("");
     const [isLoading, setLoading] = useState(false);
 
+    const [token, setToken] = useState(null);
+    const captchaRef = useRef(null);
+
     const toast = useToast()
 
     const isValidEmail = email => {
@@ -33,74 +37,110 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
         return regex.test(String(email).toLowerCase());
     };
 
-    const handleSubmit = () => {
-        if (name && email && message) {
+    // Reference: https://docs.hcaptcha.com/configuration#jsapi
+    const handleSubmit = () => captchaRef.current.execute();
 
-            if (!isValidEmail(email)) {
-                toast({
-                    title: `Invalid Email!`,
-                    status: 'warning',
-                    isClosable: true,
-                    position: 'bottom-left'
-                })
-                return
-            }
+    const onExpire = () => {
+        window.splitbee.track("hCaptcha", {
+            type: "hCaptcha Token Expired"
+        })
+    };
 
-            const templateParams = {
-                name,
-                email,
-                message,
-                subject
-            };
+    const onClose = () => {
+        window.splitbee.track("hCaptcha", {
+            type: "hCaptcha Closedd"
+        })
+    };
 
-            setLoading(true)
+    const onChalExpire = () => {
+        window.splitbee.track("hCaptcha", {
+            type: "hCaptcha Chal Token Expired"
+        })
+    };
 
-            emailjs.send(serviceId, templateId, templateParams, userId)
-                .then(response => {
-                    if (response && response.status === 200) {
+    const onError = (err) => {
+        window.splitbee.track("hCaptcha", {
+            type: `hCaptcha Error: ${err}`
+        })
+    };
+
+    useEffect(() => {
+        /**
+         *  TODO: verify user response server side!
+         *  Reference: https://docs.hcaptcha.com/#verify-the-user-response-server-side
+         */
+        if (token) {
+            if (name && email && message) {
+
+                if (!isValidEmail(email)) {
+                    toast({
+                        title: `Invalid Email!`,
+                        status: 'warning',
+                        isClosable: true,
+                        position: 'bottom-left'
+                    })
+                    return
+                }
+
+                const templateParams = {
+                    name,
+                    email,
+                    message,
+                    subject
+                };
+
+                setLoading(true)
+
+                emailjs.send(serviceId, templateId, templateParams, userId)
+                    .then(response => {
+                        if (response && response.status === 200) {
+                            toast({
+                                title: `Awesome! I'll to get back to you as soon as possible`,
+                                status: 'success',
+                                isClosable: true,
+                                position: 'bottom-left'
+                            })
+                        } else {
+                            toast({
+                                title: `Issue with email service!`,
+                                status: 'error',
+                                isClosable: true,
+                                position: 'bottom-left'
+                            })
+                        }
+                        setLoading(false)
+                    })
+                    .catch(e => {
                         toast({
-                            title: `Awesome! I'll to get back to you as soon as possible`,
-                            status: 'success',
-                            isClosable: true,
-                            position: 'bottom-left'
-                        })
-                    } else {
-                        toast({
-                            title: `Issue with email service!`,
+                            title: `Something went wrong!`,
                             status: 'error',
                             isClosable: true,
                             position: 'bottom-left'
                         })
-                    }
-                    setLoading(false)
-                })
-                .catch(e => {
-                    toast({
-                        title: `Something went wrong!`,
-                        status: 'error',
-                        isClosable: true,
-                        position: 'bottom-left'
-                    })
-                    setLoading(false)
-                });
+                        setLoading(false)
+                    });
 
-            setName('');
-            setEmail('');
-            setSubject('')
-            setMessage('');
-            if (isLoading) {
+                setName('');
+                setEmail('');
+                setSubject('')
+                setMessage('');
+                if (isLoading) {
+                    setLoading(false)
+                }
+            } else {
+                toast({
+                    title: `Name, Email & Message are mandatory fields!`,
+                    status: 'warning',
+                    isClosable: true,
+                    position: 'bottom-left'
+                })
                 setLoading(false)
             }
+            setToken(null)
         } else {
-            toast({
-                title: `Name, Email & Message are mandatory fields!`,
-                status: 'warning',
-                isClosable: true,
-                position: 'bottom-left'
-            })
-            setLoading(false)
+            return () => setToken(null)
         }
-    }
+    }, [email, isLoading, message, name, subject, toast, token, setToken]);
 
     return <StackWithTitleWrapper id={id} sectionIndex={sectionIndex} sectionTitle={sectionTitle}>
         <Text color={colorSecondary[colorMode]} fontSize='xl' mb={8}>
@@ -147,6 +187,16 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
             placeholder='Your Message'
             resize='none'
             onChange={e => setMessage(e.target.value)}
+        />
+        <HCaptcha
+            sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY}
+            size="invisible"
+            onVerify={setToken}
+            onError={onError}
+            onExpire={onExpire}
+            onClose={onClose}
+            onChalExpired={onChalExpire}
+            ref={captchaRef}
         />
         <Button
             borderColor={colorMode === 'light' ? 'purple.500' : 'initial'}
