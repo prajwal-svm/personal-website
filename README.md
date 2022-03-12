@@ -10,6 +10,7 @@
 </a>
 
 <p align="center">
+  <img src="https://img.shields.io/github/deployments/Prajwal-S-Venkatesh/personal-website/production?label=Vercel&logo=Vercel&logoColor=white"  />
   <img src="https://img.shields.io/github/license/Prajwal-S-Venkatesh/personal-website"  />
   <img src="https://img.shields.io/twitter/url?url=https://github.com/Prajwal-S-Venkatesh/personal-website"  />
 </p>
