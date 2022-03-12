@@ -12,6 +12,7 @@ import {
 import { useRouter } from 'next/router'
 
 import Container from '../components/Container'
+import BlogComments from '../components/BlogComments'
 
 const capitalize = (s) => s.split('-').reduce((a, c) => `${a} ${c[0].toUpperCase()}${c.slice(1)}`, '')
 
@@ -77,6 +78,7 @@ export default function BlogLayout({ children, frontMatter }) {
                     </Flex>
                 </Flex>
                 {children}
+                <BlogComments />
             </Stack>
         </Container>
     )

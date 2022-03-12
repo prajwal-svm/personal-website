@@ -33,6 +33,7 @@ The poject is open-sourced under MIT License 🥳. Feel free to clone the repo b
 | Mailing     | EmailJs     |
 | Analytics   | Splitbee    |
 | Hosting     | Vercel      |
+| Comments    | Utterances  |
 
 
 ## ✨ Features
@@ -56,6 +57,8 @@ NextJs does most of the work for a developer under the hood and performance is b
 - [x] Web Performance
 - [x] Web Analytics
 - [x] PWA Support
+- [x] hCaptcha Support
+- [X] Blog Comments
 
 
 ## 💅 Colors
