@@ -9,7 +9,19 @@
 
 </a>
 
-![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=personal-website-ez4dwx31f-pajwalsv.vercel.app)
+<div style="display:flex;align-items: center;justify-content:center;">
+<span style="margin-right: 10px;">
+
+![License](https://img.shields.io/github/license/Prajwal-S-Venkatesh/personal-website)
+
+</span>
+<span style="margin-left: 10px;">
+
+![Tweet](https://img.shields.io/twitter/url?url=https://github.com/Prajwal-S-Venkatesh/personal-website)
+
+</span>
+</div>
+
 
 Welcome to my `personal-website`'s github repo. This is my webfolio that I created for myself using NextJS and Chakra UI. I've added a blog section where I post about my personal experiences in life, tech, design, finance and much much more. I always wanted to build my own webfolio and publish blogs under my own domain, so here it is finally!! 🚀
 
@@ -84,3 +96,12 @@ The project supports both light & dark modes. I've managed to use only neutral c
 
 </td></tr> 
 </table>
+
+## 🔮 Future Enhancements
+
+- [ ] Refactor for clean code before project gets bigger
+- [ ] Add dynamic sitemap
+- [ ] Integrate Blog Comments Section
+- [ ] Make content json dependant
+
+---
