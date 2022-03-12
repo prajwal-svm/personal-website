@@ -24,6 +24,7 @@ export default class MyDocument extends NextDocument {
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
                     <script async src="https://cdn.splitbee.io/sb.js"></script>
+                    <script src="https://js.hcaptcha.com/1/api.js?hl=en" async defer></script>
                 </Head>
                 <body>
                     <ColorModeScript />
