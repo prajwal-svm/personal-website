@@ -1,34 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <img width='100' height='100' src="public/android-chrome-192x192.png" />
+  <h1 align="center">Prajwal S Venkatesh</h1>
+</p>
 
-## Getting Started
+<a href="https://prajwalsv.dev/">
 
-First, run the development server:
+![askdm](/assets/home_view.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+</a>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Welcome to my `personal-website`'s github repo. This is my webfolio that I created for myself using NextJS and Chakra UI. I've added a blog section where I post about my personal experiences in life, tech, design, finance and much much more. I always wanted to build my own webfolio and publish blogs under my own domain, so here it is finally!! 🚀
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 📄 License
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The poject is open-sourced under MIT License 🥳. Feel free to clone the repo but make sure to include this [LICENSE](LICENSE) file wherever you use my code. But before you clone make sure you ⭐ this repo.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 🛠️ Tech Stack
 
-## Learn More
+| System      | Stack       |
+| :---        |    :----:   |
+| Frontend    | ReactJs     |
+| Framework   | NextJs      |
+| Design      | Chakra UI   |
+| Blogging    | Next MDX    |
+| Mailing     | EmailJs     |
+| Analytics   | Splitbee    |
+| Hosting     | Vercel      |
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Not features really but here are few sections I've added in the landing page:
 
-## Deploy on Vercel
+- Home
+- About
+- Experience
+- Work
+- Contact
+- Blog
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> I'm planning to move the blog section under a seperate project and host it under the sub-domain 👉 `blog.prajwalsv.dev` in the near future so that I can integrate certain features and deploy commits independently.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+And also design for a few more sections like `Skills`, `Achievments` & `Academics` are in-progress. So... expect a refactor and more sections soon.
+
+NextJs does most of the work for a developer under the hood and performance is by default in every NextJs project! Chakra UI offers a good responsive design system with customizable break points.
+
+- [x] Responsive Design
+- [x] Web Performance
+- [x] Web Analytics
+- [x] PWA Support
+
+
+## 💅 Colors
+
+The project supports both light & dark modes. I've managed to use only neutral colors in the light mode but the dark mode comes with primary color and uses less of neutral color and colors that blend well together in dark mode. I've listed all the colors used below in both themes.
+
+<table>
+<tr><th> Light Mode </th> <th>Dark Mode</th></tr>
+<tr><td>
+
+| Name      | Color                                                                 | HEX Code    |
+| :---        |    :----:                                                           | :---        |
+| Background      | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) | `#ffffff`   |
+| Title      | ![#ffffff](https://via.placeholder.com/15/2d3748/000000?text=+)      | `#2d3748`   |
+| Text A      | ![#ffffff](https://via.placeholder.com/15/718096/000000?text=+)     | `#718096`   |
+| Text B     |  ![#ffffff](https://via.placeholder.com/15/a0aec0/000000?text=+)     | `#a0aec0`   |
+| Numberings |     ![#ffffff](https://via.placeholder.com/15/ffffff29/000000?text=+)| `#ffffff29` |
+| Border     | ![#ffffff](https://via.placeholder.com/15/d3d3d3/000000?text=+)      | `#d3d3d3`   |
+
+
+</td><td>
+
+| Name      | Color                                                                 | HEX Code    |
+| :---        |    :----:                                                           | :---        |
+| Background      | ![#ffffff](https://via.placeholder.com/15/0a192f/000000?text=+) | `#0a192f`   |
+| Title      | ![#ffffff](https://via.placeholder.com/15/ccd6f6/000000?text=+)      | `#ccd6f6`   |
+| Text A      | ![#ffffff](https://via.placeholder.com/15/a0aec0/000000?text=+)     | `#a0aec0`   |
+| Text B      | ![#ffffff](https://via.placeholder.com/15/717c98/000000?text=+)     | `#717c98`   |
+| Primary      | ![#ffffff](https://via.placeholder.com/15/4fd1c5/000000?text=+)    | `#4fd1c5`   |
+| Border     | ![#ffffff](https://via.placeholder.com/15/233554/000000?text=+)      | `#233554`   |
+
+</td></tr> 
+</table>
