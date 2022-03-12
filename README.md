@@ -9,6 +9,8 @@
 
 </a>
 
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=personal-website-ez4dwx31f-pajwalsv.vercel.app)
+
 Welcome to my `personal-website`'s github repo. This is my webfolio that I created for myself using NextJS and Chakra UI. I've added a blog section where I post about my personal experiences in life, tech, design, finance and much much more. I always wanted to build my own webfolio and publish blogs under my own domain, so here it is finally!! 🚀
 
 ## 📄 License
