@@ -9,18 +9,10 @@
 
 </a>
 
-<div style="display:flex;align-items: center;justify-content:center;">
-<span style="margin-right: 10px;">
-
-![License](https://img.shields.io/github/license/Prajwal-S-Venkatesh/personal-website)
-
-</span>
-<span style="margin-left: 10px;">
-
-![Tweet](https://img.shields.io/twitter/url?url=https://github.com/Prajwal-S-Venkatesh/personal-website)
-
-</span>
-</div>
+<p align="center">
+  <img src="https://img.shields.io/github/license/Prajwal-S-Venkatesh/personal-website"  />
+  <img src="https://img.shields.io/twitter/url?url=https://github.com/Prajwal-S-Venkatesh/personal-website"  />
+</p>
 
 
 Welcome to my `personal-website`'s github repo. This is my webfolio that I created for myself using NextJS and Chakra UI. I've added a blog section where I post about my personal experiences in life, tech, design, finance and much much more. I always wanted to build my own webfolio and publish blogs under my own domain, so here it is finally!! 🚀
