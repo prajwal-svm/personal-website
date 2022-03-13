@@ -92,59 +92,83 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
     };
 
     useEffect(() => {
-        /**
-         *  TODO: verify user response server side!
-         *  Reference: https://docs.hcaptcha.com/#verify-the-user-response-server-side
-         */
         if (token) {
+            (async () => {
 
-            const templateParams = {
-                name,
-                email,
-                message,
-                subject
-            };
+                // verify response token server side
+                const response = await fetch('/api/hCaptcha', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                }) || {};
 
-            setLoading(true)
+                const { success: isTokenVerified, message: errMsg = null } = await response.json();
 
-            emailjs.send(serviceId, templateId, templateParams, userId)
-                .then(response => {
-                    if (response && response.status === 200) {
-                        toast({
-                            title: `Awesome! I'll to get back to you as soon as possible`,
-                            status: 'success',
-                            isClosable: true,
-                            position: 'bottom-left'
+                if (isTokenVerified) {
+
+                    const templateParams = {
+                        name,
+                        email,
+                        message,
+                        subject
+                    };
+
+                    setLoading(true)
+
+                    emailjs.send(serviceId, templateId, templateParams, userId)
+                        .then(response => {
+                            if (response && response.status === 200) {
+                                toast({
+                                    title: `Awesome! I'll to get back to you as soon as possible`,
+                                    status: 'success',
+                                    isClosable: true,
+                                    position: 'bottom-left'
+                                })
+                            } else {
+                                toast({
+                                    title: `Issue with email service!`,
+                                    status: 'error',
+                                    isClosable: true,
+                                    position: 'bottom-left'
+                                })
+                            }
+                            setLoading(false)
                         })
-                    } else {
-                        toast({
-                            title: `Issue with email service!`,
-                            status: 'error',
-                            isClosable: true,
-                            position: 'bottom-left'
-                        })
+                        .catch(e => {
+                            toast({
+                                title: `Something went wrong!`,
+                                status: 'error',
+                                isClosable: true,
+                                position: 'bottom-left'
+                            })
+                            setLoading(false)
+                        });
+
+                    setName('');
+                    setEmail('');
+                    setSubject('')
+                    setMessage('');
+                    if (isLoading) {
+                        setLoading(false)
                     }
-                    setLoading(false)
-                })
-                .catch(e => {
+
+
+                } else {
                     toast({
-                        title: `Something went wrong!`,
+                        title: `hCaptcha token verification failed!`,
                         status: 'error',
                         isClosable: true,
                         position: 'bottom-left'
                     })
-                    setLoading(false)
-                });
+                    window.splitbee.track("hCaptcha", {
+                        type: errMsg || 'hCaptcha token verification failed'
+                    })
+                }
+                setToken(null)
 
-            setName('');
-            setEmail('');
-            setSubject('')
-            setMessage('');
-            if (isLoading) {
-                setLoading(false)
-            }
-
-            setToken(null)
+            })();
         } else {
             return () => setToken(null)
         }

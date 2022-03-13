@@ -19,6 +19,7 @@
     "emailjs-com": "^3.2.0",
     "framer-motion": "^6",
     "gray-matter": "^4.0.2",
+    "hcaptcha": "^0.1.1",
     "mdx-prism": "^0.3.1",
     "next": "12.1.0",
     "next-google-fonts": "^2.2.0",
