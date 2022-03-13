@@ -38,7 +38,34 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
     };
 
     // Reference: https://docs.hcaptcha.com/configuration#jsapi
-    const handleSubmit = () => captchaRef.current.execute();
+    const handleSubmit = () => {
+
+        if (name && email && message) {
+
+            if (!isValidEmail(email)) {
+                toast({
+                    title: `Invalid Email!`,
+                    status: 'warning',
+                    isClosable: true,
+                    position: 'bottom-left'
+                })
+                return
+            }
+
+
+            captchaRef.current.execute();
+
+        } else {
+            toast({
+                title: `Name, Email & Message are mandatory fields!`,
+                status: 'warning',
+                isClosable: true,
+                position: 'bottom-left'
+            })
+            setLoading(false)
+        }
+
+    }
 
     const onExpire = () => {
         window.splitbee.track("hCaptcha", {
@@ -70,72 +97,53 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
          *  Reference: https://docs.hcaptcha.com/#verify-the-user-response-server-side
          */
         if (token) {
-            if (name && email && message) {
 
-                if (!isValidEmail(email)) {
-                    toast({
-                        title: `Invalid Email!`,
-                        status: 'warning',
-                        isClosable: true,
-                        position: 'bottom-left'
-                    })
-                    return
-                }
+            const templateParams = {
+                name,
+                email,
+                message,
+                subject
+            };
 
-                const templateParams = {
-                    name,
-                    email,
-                    message,
-                    subject
-                };
+            setLoading(true)
 
-                setLoading(true)
-
-                emailjs.send(serviceId, templateId, templateParams, userId)
-                    .then(response => {
-                        if (response && response.status === 200) {
-                            toast({
-                                title: `Awesome! I'll to get back to you as soon as possible`,
-                                status: 'success',
-                                isClosable: true,
-                                position: 'bottom-left'
-                            })
-                        } else {
-                            toast({
-                                title: `Issue with email service!`,
-                                status: 'error',
-                                isClosable: true,
-                                position: 'bottom-left'
-                            })
-                        }
-                        setLoading(false)
-                    })
-                    .catch(e => {
+            emailjs.send(serviceId, templateId, templateParams, userId)
+                .then(response => {
+                    if (response && response.status === 200) {
                         toast({
-                            title: `Something went wrong!`,
+                            title: `Awesome! I'll to get back to you as soon as possible`,
+                            status: 'success',
+                            isClosable: true,
+                            position: 'bottom-left'
+                        })
+                    } else {
+                        toast({
+                            title: `Issue with email service!`,
                             status: 'error',
                             isClosable: true,
                             position: 'bottom-left'
                         })
-                        setLoading(false)
-                    });
-
-                setName('');
-                setEmail('');
-                setSubject('')
-                setMessage('');
-                if (isLoading) {
+                    }
                     setLoading(false)
-                }
-            } else {
-                toast({
-                    title: `Name, Email & Message are mandatory fields!`,
-                    status: 'warning',
-                    isClosable: true,
-                    position: 'bottom-left'
                 })
+                .catch(e => {
+                    toast({
+                        title: `Something went wrong!`,
+                        status: 'error',
+                        isClosable: true,
+                        position: 'bottom-left'
+                    })
+                    setLoading(false)
+                });
+
+            setName('');
+            setEmail('');
+            setSubject('')
+            setMessage('');
+            if (isLoading) {
                 setLoading(false)
             }
+
             setToken(null)
         } else {
             return () => setToken(null)
