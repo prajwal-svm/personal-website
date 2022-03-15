@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import { useColorMode, Heading, Text, Flex, Box, Link, Tag } from '@chakra-ui/react'
 import { parseISO, format } from 'date-fns'
 
-const BlogPost = ({ title, difficulty, publishedAt, summary, slug }) => {
+const LeetCodePost = ({ title, difficulty, publishedAt, summary, slug }) => {
     const { colorMode } = useColorMode()
     const secondaryTextColor = {
         light: 'gray.700',
@@ -17,7 +17,7 @@ const BlogPost = ({ title, difficulty, publishedAt, summary, slug }) => {
     }
 
     return (
-        <NextLink borderRadius={10} href={`blog/${slug}`} passHref>
+        <NextLink borderRadius={10} href={`leetcode/${slug}`} passHref>
             <Link w="100%" borderRadius={10} p={4} _hover={{ textDecoration: 'none', background: 'rgba(255,255,255,0.03)' }}>
                 <Box mb={2} display="block" width="100%" borderRadius={10}>
                     <Flex
@@ -36,14 +36,6 @@ const BlogPost = ({ title, difficulty, publishedAt, summary, slug }) => {
                             </Tag>}
                         </Flex>
 
-                        <Text
-                            color="gray.500"
-                            minWidth="140px"
-                            textAlign={['left', 'right']}
-                            mb={[4, 0]}
-                        >
-                            {format(parseISO(publishedAt), 'MMMM dd, yyyy')}
-                        </Text>
 
                     </Flex>
                     <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
@@ -54,4 +46,4 @@ const BlogPost = ({ title, difficulty, publishedAt, summary, slug }) => {
     )
 }
 
-export default BlogPost
+export default LeetCodePost
