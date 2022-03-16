@@ -177,8 +177,7 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
     return <StackWithTitleWrapper id={id} sectionIndex={sectionIndex} sectionTitle={sectionTitle}>
         <Text color={colorSecondary[colorMode]} fontSize='xl' mb={8}>
             Although I&lsquo;m not looking for any new opportunities at the moment,
-            my inbox is always open. I&lsquo;d like to know who you are and how you ended up on this page! Follow me on the below mentioned handles or
-            if you have a question or just want to say hi use the below form, I&lsquo;ll try my best to get back to you!
+            my inbox is always open. I&lsquo;d like to know who you are and how you ended up on this page! If you have a question or just want to say &quot;Hey&quot; use the below form, I&lsquo;ll try my best to get back to you!
         </Text>
         <Input
             _placeholder={{ color: colorMode === 'light' ? 'gray.500' : 'gray.500' }}
