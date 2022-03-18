@@ -1,0 +1,74 @@
+---
+title: "27. Remove Element"
+difficulty: "Easy"
+publishedAt: "2022-03-18"
+summary: "
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
+The relative order of the elements may be changed. 
+Return k after placing the final result in the first k slots of nums.
+"
+---
+
+## Naive Approach:
+
+```
+# initialize 2 pointers to 0
+# while pointer != n
+#   If the current element == value then
+#       we need to move it to the end so
+#           look for an element from current + 1 position != val
+#               if found
+#                   swap it and increment counter
+#               else
+#                   terminate the main loop by p = n - 1 since we dont have any non val to swap with
+#   p+=1
+```
+
+```python:Solution.py
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        p = q = 0
+        k = 0
+        n = len(nums)
+        while p!= n:
+            if nums[p] == val:
+                q=min(p+1, n-1)
+                while q != n-1:
+                    if nums[q]!=val:
+                        break
+                    else:
+                        q+=1
+                if nums[q] != val:
+                    print(p,q)
+                    temp = nums[p]
+                    nums[p] = nums[q]
+                    nums[q] = temp
+                    k+=1
+            else:
+                k+=1
+            p+=1
+
+        return k
+
+```
+
+> TC: O(n^2) SC: O(1)
+
+---
+
+## Best Approach
+
+Replce the elements on the go
+
+```python:Solution.py
+def removeElement(self, nums, val):
+    i = 0
+    for x in nums:
+        if x != val:
+            nums[i] = x
+            i += 1
+    return i
+```
+
+> TC: O(n) SC: O(1)
