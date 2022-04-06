@@ -50,7 +50,7 @@ const Links = [
     },
     {
         title: 'Blog',
-        href: '/blog',
+        href: 'https://blog.prajwalsv.dev',
         icon: <MdWeb />
     },
 ]
