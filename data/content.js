@@ -3,8 +3,7 @@ export const RESUME_URI = 'https://resume.prajwalsv.dev/'
 export const CONTAINER_DATA = {
   avatar: {
     name: 'Prajwal S Venkatsh',
-    uri:
-      'https://i.postimg.cc/FHRgLsF9/273391645-515349003237096-7535402446863100521-n.jpg'
+    uri: '/logo.jpg'
   },
   navLinks: [
     {
@@ -57,9 +56,6 @@ export const CONTAINER_DATA = {
 export const HOME_DATA = {
   titleA: 'Hey 👋, my name is',
   titleB: 'Prajwal S Venkatesh.',
-  titleC: 'I build stuff for the web.',
-  titleDescription:
-    " I'm a software engineer specializing in building exceptional digital experiences ✨. I'm an inquisite, creative, brainstorming mastermind behind computer programs of all sorts 🤓. Currently, I'm working as a Mid Frontend Engineer at Certa 👨‍💻.",
   ctaText: 'Download Resume',
   colorSwitch: {
     titleA: {
@@ -134,8 +130,7 @@ export const ABOUT_ME_DATA = {
     }
   ],
   img: {
-    uri:
-      'https://i.postimg.cc/CKtgg15d/273391645-515349003237096-7535402446863100521-n.jpg',
+    uri: '/about.webp',
     alt: 'Prajwal S Venkatesh'
   },
   colorSwitch: {

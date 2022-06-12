@@ -14,6 +14,7 @@ import NextLink from 'next/link'
 import { motion } from 'framer-motion'
 import { BsMouse } from 'react-icons/bs'
 import { HOME_DATA, RESUME_URI } from '../data/content'
+import { RoughNotation, RoughNotationGroup } from 'react-rough-notation'
 
 const MotionBox = motion(Box)
 
@@ -62,21 +63,96 @@ const Home = () => {
           >
             {HOME_DATA.titleB}
           </Heading>
-          <Heading
-            as='h2'
-            size='2xl'
-            mb={6}
-            color={HOME_DATA.colorSwitch.titleC[colorMode]}
-          >
-            {HOME_DATA.titleC}
-          </Heading>
-          <Text
-            color={HOME_DATA.colorSwitch.titleDescription[colorMode]}
-            fontSize='xl'
-            mb={8}
-          >
-            {HOME_DATA.titleDescription}
-          </Text>
+          <RoughNotationGroup>
+            <Heading
+              as='h2'
+              size='2xl'
+              mb={6}
+              color={HOME_DATA.colorSwitch.titleC[colorMode]}
+            >
+              I build &nbsp;
+              <RoughNotation
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#FDFFB6'
+              >
+                stuff
+              </RoughNotation>
+              &nbsp; for the&nbsp;
+              <RoughNotation
+                type='circle'
+                show
+                color='#FFAFCC'
+                padding={[2, 6]}
+              >
+                web
+              </RoughNotation>
+              .
+            </Heading>
+            <Text
+              color={HOME_DATA.colorSwitch.titleDescription[colorMode]}
+              fontSize='xl'
+              mb={8}
+              lineHeight={9}
+            >
+              I'm a&nbsp;&nbsp;
+              <RoughNotation
+                padding={[2, 6]}
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#CAFFBF'
+              >
+                software engineer
+              </RoughNotation>
+              &nbsp; specializing in building user appealing and exceptional{' '}
+              <RoughNotation
+                padding={[2, 6]}
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#FFC6FF'
+              >
+                digital experiences.
+              </RoughNotation>{' '}
+              I'm an{' '}
+              <RoughNotation
+                padding={[2, 6]}
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#A0C4FF'
+              >
+                inquisite
+              </RoughNotation>{' '}
+              ,{' '}
+              <RoughNotation
+                padding={[2, 6]}
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#FFD6A5'
+              >
+                creative
+              </RoughNotation>{' '}
+              ,{' '}
+              <RoughNotation
+                padding={[2, 6]}
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#FFADAD'
+              >
+                brainstorming mastermind
+              </RoughNotation>{' '}
+              behind computer programs of all sorts. Currently, I'm working as a{' '}
+              <RoughNotation
+                padding={[2, 6]}
+                type={colorMode === 'dark' ? 'underline' : 'highlight'}
+                show
+                color='#9BF6FF'
+              >
+                Mid Frontend Engineer
+              </RoughNotation>{' '}
+              at Certa.
+            </Text>
+          </RoughNotationGroup>
+
           <Button
             colorScheme={HOME_DATA.colorSwitch.ctaBtn[colorMode]}
             variant={HOME_DATA.colorSwitch.ctaVariant[colorMode]}
