@@ -95,7 +95,7 @@ const Home = () => {
               mb={8}
               lineHeight={9}
             >
-              I'm a&nbsp;&nbsp;
+              I&apos;m a&nbsp;&nbsp;
               <RoughNotation
                 padding={[2, 6]}
                 type={colorMode === 'dark' ? 'underline' : 'highlight'}
@@ -113,7 +113,7 @@ const Home = () => {
               >
                 digital experiences.
               </RoughNotation>{' '}
-              I'm an{' '}
+              I&apos;m an{' '}
               <RoughNotation
                 padding={[2, 6]}
                 type={colorMode === 'dark' ? 'underline' : 'highlight'}
@@ -140,7 +140,8 @@ const Home = () => {
               >
                 brainstorming mastermind
               </RoughNotation>{' '}
-              behind computer programs of all sorts. Currently, I'm working as a{' '}
+              behind computer programs of all sorts. Currently, I&apos;m working
+              as a{' '}
               <RoughNotation
                 padding={[2, 6]}
                 type={colorMode === 'dark' ? 'underline' : 'highlight'}
