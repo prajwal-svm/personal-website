@@ -79,11 +79,11 @@ const Home = () => {
               lineHeight={9}
             >
               Originally from Bengaluru, now a Chicago resident. I have a
-              passion for molding pixels into perfection. I've been reshaping
-              online landscapes for over three years. Beyond the codes and
-              clouds, I'm navigating the academic corridors at Illinois Tech,
-              delving into the frontiers of software development in my master's
-              quest.
+              passion for molding pixels into perfection. I&apos;ve been
+              reshaping online landscapes for over three years. Beyond the codes
+              and clouds, I&apos;m navigating the academic corridors at Illinois
+              Tech, delving into the frontiers of software development in my
+              master&apos;s quest.
             </Text>
           </RoughNotationGroup>
 

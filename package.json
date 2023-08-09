@@ -1,6 +1,7 @@
 {
   "name": "personal-website",
   "version": "0.1.0",
+  "node": ">=18.x",
   "private": true,
   "scripts": {
     "dev": "next dev",
