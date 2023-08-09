@@ -7,7 +7,7 @@ import { primaryDarkColor } from '../styles/theme'
 
 const colorSecondary = {
     light: '#ccd6f6',
-    dark: '#ccd6f6'
+    dark: 'purple.100'
 }
 
 const ProjectsData = [
@@ -61,15 +61,15 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
                     backgroundSize='contain'
                     position='relative'
                 >
-                    <Box w='100%' h='100%' bg='#0a192ff0' position='absolute' zIndex='1' />
+                    <Box w='100%' h='100%' bg='#322659f0' position='absolute' zIndex='1' />
                     <Box w='100%' h='100%' p='10' position='absolute' zIndex='2'>
-                        {project.isFeatured && <Text color={colorMode === 'light' ? 'gray.400' : 'primary'} fontSize='md'>Featured Project</Text>}
+                        {project.isFeatured && <Text color={colorMode === 'light' ? 'gray.400' : 'purple.300'} fontSize='md'>Featured Project</Text>}
                         <Heading color={colorSecondary[colorMode]}>{project.title}</Heading>
 
                         <List spacing={3} mt={8}>
                             {
                                 project.content.map((text) => <ListItem key={text} color={colorSecondary[colorMode]}>
-                                    <ListIcon as={ChevronRightIcon} color={colorMode === 'light' ? 'gray.400' : 'primary'} />
+                                    <ListIcon as={ChevronRightIcon} color={colorMode === 'light' ? 'gray.400' : 'purple.300'} />
                                     {text}
                                 </ListItem>)
                             }
@@ -78,7 +78,7 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
 
                         <Box mt={4}>
                             {
-                                project.tags.map(tag => <Tag colorScheme={colorMode === 'light' ? 'gray' : 'teal'} key={tag} mt={4} mr={4}>{tag}</Tag>)
+                                project.tags.map(tag => <Tag colorScheme={colorMode === 'light' ? 'gray' : 'purple'} key={tag} mt={4} mr={4}>{tag}</Tag>)
                             }
                         </Box>
 

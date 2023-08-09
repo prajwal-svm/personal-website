@@ -14,79 +14,80 @@ import {
   Tabs,
   Tag,
   Text,
-  useColorMode
-} from '@chakra-ui/react'
-import styled from '@emotion/styled'
-import React, { useState } from 'react'
-import StackWithTitleWrapper from './StackWithTitleWrapper'
-import { CheckCircleIcon } from '@chakra-ui/icons'
-import { primaryDarkColor } from '../styles/theme'
-import { EXPERIENCE_DATA } from '../data/content'
+  useColorMode,
+} from "@chakra-ui/react";
+import styled from "@emotion/styled";
+import React, { useState } from "react";
+import StackWithTitleWrapper from "./StackWithTitleWrapper";
+import { CheckCircleIcon } from "@chakra-ui/icons";
+import { primaryDarkColor } from "../styles/theme";
+import { EXPERIENCE_DATA } from "../data/content";
 
 const LeftPane = styled.div(
   ({ active, colorMode }) => `
     height: 46px;
     text-align: left;
-    padding-left: ${active ? '23px' : '24px'};
+    padding-left: ${active ? "23px" : "24px"};
     font-size: 18px;
     border-radius: 0 8px 8px 0;
     margin-top: 2px;
     line-height: 46px;
     max-width: 180px;
-    margin-left: ${active && '-3px'};
-    background: ${active && 'rgba(255,255,255,0.16)'};
-    border-left: ${active &&
-      `4px solid ${colorMode === 'light' ? 'gray' : primaryDarkColor}`};
-    font-weight: ${active && '600'};
+    margin-left: ${active && "-3px"};
+    background: ${active && "rgba(255,255,255,0.16)"};
+    border-left: ${
+      active && `4px solid ${colorMode === "light" ? "gray" : primaryDarkColor}`
+    };
+    font-weight: ${active && "600"};
 
     &:hover{
         cursor: pointer;
         background: rgba(255,255,255,0.16);
         color: white;
         border-left: ${`4px solid ${
-          colorMode === 'light' ? 'gray' : primaryDarkColor
+          colorMode === "light" ? "gray" : primaryDarkColor
         }`};
         padding-left: 23px;
         margin-left: -3px;
         transition: unset;
 
         p {
-            color: ${!active && '#ccd6f6'};
+            color: ${!active && primaryDarkColor};
         }
     }
 `
-)
+);
 
 const Experience = ({ id, sectionIndex, sectionTitle }) => {
-  const { colorMode } = useColorMode()
-  const [active, setActive] = useState(EXPERIENCE_DATA.data[0])
+  const { colorMode } = useColorMode();
+  const [active, setActive] = useState(EXPERIENCE_DATA.data[0]);
 
-  function ActiveContent ({ active }) {
+  function ActiveContent({ active }) {
     return (
       <>
         <Heading
-          as='h3'
-          size='lg'
+          as="h3"
+          size="lg"
           color={EXPERIENCE_DATA.colorVariant.titleColor[colorMode]}
         >
           {active.designation}
           <Text
-            as='span'
-            color={colorMode === 'light' ? 'gray.700' : 'primary'}
+            as="span"
+            color={colorMode === "light" ? "gray.700" : "purple.100"}
           >
             &nbsp;@&nbsp;
           </Text>
           <Link
-            color={colorMode === 'light' ? 'gray.700' : 'primary'}
+            color={colorMode === "light" ? "gray.700" : "purple.100"}
             href={active.link}
           >
             {active.company}
           </Link>
         </Heading>
         <Text
-          mb='4'
-          px='1.5'
-          color={EXPERIENCE_DATA.colorVariant.colorSecondary[colorMode]}
+          mb="4"
+          px="1.5"
+          color={EXPERIENCE_DATA.colorVariant.colorSecondaryDuration[colorMode]}
         >
           {active.from} - {active.to}
         </Text>
@@ -99,7 +100,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
             >
               <ListIcon
                 as={CheckCircleIcon}
-                color={colorMode === 'light' ? 'gray.700' : 'primary'}
+                color={colorMode === "light" ? "gray.700" : "purple.400"}
               />
               {data}
             </ListItem>
@@ -108,37 +109,37 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
 
         <Box mt={6}>
           {active.skills.map((skill, index) => (
-            <Tag key={index} mr={4} mt={4}>
+            <Tag key={index} mr={4} mt={4} colorScheme="purple">
               {skill}
             </Tag>
           ))}
         </Box>
       </>
-    )
+    );
   }
 
-  function DataTabs ({ data, colorMode }) {
+  function DataTabs({ data, colorMode }) {
     return (
       <Tabs
-        display={['block', 'block', 'block', 'none']}
-        width='100%'
-        colorScheme={colorMode === 'light' ? 'black' : 'teal'}
+        display={["block", "block", "block", "none"]}
+        width="100%"
+        colorScheme={colorMode === "light" ? "black" : "teal"}
       >
         <TabList
-          height='20'
+          height="20"
           fontWeight={600}
-          display='flex'
-          flexDirection='row'
-          overflowX='scroll'
-          overflowY='hidden'
+          display="flex"
+          flexDirection="row"
+          overflowX="scroll"
+          overflowY="hidden"
         >
           {data.map((tab, index) => (
-            <Tab fontSize='xl' color w='100%' whiteSpace='nowrap' key={index}>
+            <Tab fontSize="xl" color w="100%" whiteSpace="nowrap" key={index}>
               {tab.company}
             </Tab>
           ))}
         </TabList>
-        <TabPanels overflowY='scroll'>
+        <TabPanels overflowY="scroll">
           {data.map((tab, index) => (
             <TabPanel p={4} key={index}>
               <ActiveContent active={tab} />
@@ -146,7 +147,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           ))}
         </TabPanels>
       </Tabs>
-    )
+    );
   }
 
   return (
@@ -156,21 +157,21 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
       sectionTitle={sectionTitle}
     >
       <Grid
-        display={['none', 'none', 'none', 'grid']}
-        width='100%'
-        minH='500px'
-        templateColumns='repeat(5, 1fr)'
+        display={["none", "none", "none", "grid"]}
+        width="100%"
+        minH="500px"
+        templateColumns="repeat(5, 1fr)"
         pt={12}
       >
         <GridItem
           colSpan={1}
-          width='200px'
-          height='fit-content'
+          width="200px"
+          height="fit-content"
           borderLeft={`2px solid ${
-            colorMode === 'light' ? 'lightgray' : '#233554'
+            colorMode === "light" ? "lightgray" : "#233554"
           }`}
         >
-          {EXPERIENCE_DATA.data.map(data => (
+          {EXPERIENCE_DATA.data.map((data) => (
             <LeftPane
               key={data.key}
               onClick={() => setActive(data)}
@@ -180,9 +181,9 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
               <Text
                 color={
                   active.key === data.key
-                    ? colorMode === 'light'
-                      ? 'gray.700'
-                      : 'primary'
+                    ? colorMode === "light"
+                      ? "gray.700"
+                      : "primary"
                     : EXPERIENCE_DATA.colorVariant.colorSecondary[colorMode]
                 }
               >
@@ -191,14 +192,14 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
             </LeftPane>
           ))}
         </GridItem>
-        <GridItem colSpan={4} width='100%' minH='80px'>
+        <GridItem colSpan={4} width="100%" minH="80px">
           <ActiveContent active={active} />
         </GridItem>
       </Grid>
 
       <DataTabs data={EXPERIENCE_DATA.data} colorMode={colorMode} />
     </StackWithTitleWrapper>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

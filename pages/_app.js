@@ -1,17 +1,21 @@
-import React from 'react'
-import { ChakraProvider, ColorModeProvider, useColorMode } from '@chakra-ui/react'
-import customTheme from '../styles/theme'
-import { Global, css } from '@emotion/react'
-import { prismLightTheme, prismDarkTheme } from '../styles/prism'
+import React from "react";
+import {
+  ChakraProvider,
+  ColorModeProvider,
+  useColorMode,
+} from "@chakra-ui/react";
+import customTheme from "../styles/theme";
+import { Global, css } from "@emotion/react";
+import { prismLightTheme, prismDarkTheme } from "../styles/prism";
 
 const GlobalStyle = ({ children }) => {
-  const { colorMode } = useColorMode()
+  const { colorMode } = useColorMode();
 
   return (
     <>
       <Global
         styles={css`
-          ${colorMode === 'light' ? prismLightTheme : prismDarkTheme};
+          ${prismDarkTheme};
           ::selection {
             background-color: #233554;
             color: #ccd6f6;
@@ -29,22 +33,22 @@ const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${colorMode === 'light' ? 'white' : '#0a192f'};
+            background: ${"#10002b"};
           }
         `}
       />
       {children}
     </>
-  )
-}
+  );
+};
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider resetCSS theme={customTheme}>
+    <ChakraProvider theme={customTheme}>
       <ColorModeProvider
         options={{
           initialColorMode: "dark",
-          useSystemColorMode: true,
+          useSystemColorMode: false,
         }}
       >
         <GlobalStyle>
@@ -52,7 +56,7 @@ function MyApp({ Component, pageProps }) {
         </GlobalStyle>
       </ColorModeProvider>
     </ChakraProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
