@@ -10,6 +10,7 @@ import {
   Tag,
   Text,
   useColorMode,
+  Tooltip,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import StackWithTitleWrapper from "./StackWithTitleWrapper";
@@ -88,13 +89,20 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
           justifyContent="center"
           position="relative"
         >
-          <StyledBox pr="10px" colorMode={colorMode}>
-            <Image
-              boxSize="250px"
-              src={ABOUT_ME_DATA.img.uri}
-              alt={ABOUT_ME_DATA.img.alt}
-            />
-          </StyledBox>
+          <Tooltip
+            label="Me giving one last cuddle to Skye before I flew back to USA..."
+            fontSize="lg"
+            hasArrow
+            closeDelay={500}
+          >
+            <StyledBox pr="10px" colorMode={colorMode}>
+              <Image
+                boxSize="250px"
+                src={ABOUT_ME_DATA.img.uri}
+                alt={ABOUT_ME_DATA.img.alt}
+              />
+            </StyledBox>
+          </Tooltip>
         </GridItem>
         <GridItem colSpan={5}>
           <Text
@@ -112,7 +120,12 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
                 alignItems="flex-start"
                 flexWrap="nowrap"
               >
-                <ListIcon mt={1.5} key={index} as={StarIcon} color={primaryDarkColor} />
+                <ListIcon
+                  mt={1.5}
+                  key={index}
+                  as={StarIcon}
+                  color={primaryDarkColor}
+                />
                 <Text
                   fontSize="lg"
                   color={ABOUT_ME_DATA.colorSwitch.text[colorMode]}
