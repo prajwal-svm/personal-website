@@ -6,11 +6,41 @@ import AboutMe from "../components/AboutMe";
 import Experience from "../components/Experience";
 import Work from "../components/Work";
 import Contact from "../components/Contact";
+import { Flex, Center, Spinner, useColorMode } from "@chakra-ui/react";
+import { primaryBackgroundColor } from "../styles/theme";
 
 export default function Index() {
+  const [isLoading, setLoading] = React.useState(true);
+
+  const { colorMode } = useColorMode();
+
   React.useEffect(() => {
-    localStorage?.setItem("chakra-ui-color-mode", "dark");
+    if (colorMode && localStorage?.getItem("chakra-ui-color-mode")) {
+      return setLoading(false);
+    }
+    if (
+      colorMode === "dark" &&
+      localStorage?.getItem("chakra-ui-color-mode") === null
+    ) {
+      localStorage?.setItem("chakra-ui-color-mode", "dark");
+      window.location.reload();
+    }
   }, []);
+
+  if (isLoading)
+    return (
+      <Flex color="white">
+        <Center w="100vw" h="100vh" bg={primaryBackgroundColor}>
+          <Spinner
+            thickness="10px"
+            speed="0.65s"
+            emptyColor="gray.100"
+            color="blue.500"
+            size="xl"
+          />
+        </Center>
+      </Flex>
+    );
 
   return (
     <Container>

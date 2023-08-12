@@ -38,8 +38,7 @@ const StyledBox = styled(Box)`
     margin-right: 17px;
 
     background: transparent;
-    border: ${(props) =>
-      props.colorMode === "light" ? "10px double gray" : "10px double #E9D8FD"};
+    border: ${(props) => `10px double ${primaryDarkColor}`};
     right: 0;
 
     position: absolute;
@@ -110,14 +109,10 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
               <ListItem
                 key={index}
                 display="flex"
-                alignItems="center"
+                alignItems="flex-start"
                 flexWrap="nowrap"
               >
-                <ListIcon
-                  key={index}
-                  as={StarIcon}
-                  color={colorMode === "light" ? "gray" : "purple.700"}
-                />
+                <ListIcon mt={1.5} key={index} as={StarIcon} color={primaryDarkColor} />
                 <Text
                   fontSize="lg"
                   color={ABOUT_ME_DATA.colorSwitch.text[colorMode]}
@@ -126,7 +121,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
                     {skill.title} -{" "}
                   </Text>
                   {skill.list.map((item, i) => (
-                    <Tag key={i} mx="1" mt="1" colorScheme="purple">
+                    <Tag key={i} mx="1" mt="1" colorScheme="gray">
                       {item}
                     </Tag>
                   ))}

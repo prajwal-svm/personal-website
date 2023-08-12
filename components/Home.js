@@ -7,6 +7,7 @@ import {
   Icon,
   Stack,
   Text,
+  Tooltip,
   useColorMode,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
@@ -55,14 +56,17 @@ const Home = () => {
           >
             {HOME_DATA.titleA}
           </Heading>
-          <Heading
-            as="h1"
-            size="3xl"
-            mb={4}
-            color={HOME_DATA.colorSwitch.titleB[colorMode]}
-          >
-            {HOME_DATA.titleB}
-          </Heading>
+          <Tooltip label="Prajwal S Venkateshmurthy">
+            <Heading
+              as="h1"
+              fontSize={['3xl', '4xl', '5xl', '6xl']}
+              mb={4}
+              color={HOME_DATA.colorSwitch.titleB[colorMode]}
+            >
+              {HOME_DATA.titleB}
+            </Heading>
+          </Tooltip>
+
           <RoughNotationGroup>
             <Heading
               as="h2"

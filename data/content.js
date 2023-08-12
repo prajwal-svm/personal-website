@@ -1,3 +1,9 @@
+import {
+  mutedForegroundColor,
+  primaryBackgroundColor,
+  primaryDarkColor,
+} from "../styles/theme";
+
 export const RESUME_URI = "https://resume.prajwalsv.dev/";
 
 export const CONTAINER_DATA = {
@@ -40,7 +46,7 @@ export const CONTAINER_DATA = {
   colorVariant: {
     bgColor: {
       light: "white",
-      dark: "#10002b",
+      dark: primaryBackgroundColor,
     },
     color: {
       light: "black",
@@ -48,7 +54,7 @@ export const CONTAINER_DATA = {
     },
     navHoverBg: {
       light: "gray.100",
-      dark: "purple.900",
+      dark: "#1e293b",
     },
   },
 };
@@ -60,23 +66,23 @@ export const HOME_DATA = {
   colorSwitch: {
     titleA: {
       light: "gray.700",
-      dark: "purple.50",
+      dark: "blue.50",
     },
     titleB: {
-      light: "gray.600",
-      dark: "purple.300",
+      light: primaryDarkColor,
+      dark: primaryDarkColor,
     },
     titleC: {
       light: "gray.500",
-      dark: "gray.50",
+      dark: mutedForegroundColor,
     },
     titleDescription: {
       light: "gray.900",
-      dark: "purple.200",
+      dark: "blue.50",
     },
     ctaBtn: {
-      light: "black",
-      dark: "purple",
+      light: "crimson",
+      dark: "gray",
     },
     ctaVariant: {
       light: "outline",
@@ -136,7 +142,7 @@ export const ABOUT_ME_DATA = {
   colorSwitch: {
     text: {
       light: "gray.600",
-      dark: "purple.200",
+      dark: "blue.50",
     },
   },
 };
@@ -248,16 +254,16 @@ export const EXPERIENCE_DATA = {
   ],
   colorVariant: {
     colorSecondaryDuration: {
-      light: "gray.600",
-      dark: "purple.50",
+      light: mutedForegroundColor,
+      dark: mutedForegroundColor,
     },
     colorSecondary: {
       light: "gray.600",
-      dark: "purple.100",
+      dark: "blue.50",
     },
     titleColor: {
-      light: "gray.600",
-      dark: "purple.300",
+      light: primaryDarkColor,
+      dark: primaryDarkColor,
     },
   },
 };
@@ -278,11 +284,11 @@ export const CONTACT = {
   colorSwitch: {
     text: {
       light: "gray.600",
-      dark: "purple.200",
+      dark: "blue.50",
     },
     fieldBorderColor: {
       light: "darkgray",
-      dark: "purple.900",
+      dark: mutedForegroundColor,
     },
     btnBorderColor: {
       light: "black",
@@ -290,7 +296,7 @@ export const CONTACT = {
     },
     btnColor: {
       light: "gray.700",
-      dark: "purple.300",
+      dark: "blue.50",
     },
     btnVariant: {
       light: "outline",
@@ -326,15 +332,15 @@ export const FOOTER = {
   colorSwitch: {
     notes: {
       light: "gray.700",
-      dark: "purple.50",
+      dark: "blue.50",
     },
     divider: {
       light: "darkgray",
-      dark: "purple.800",
+      dark: "#1e293b",
     },
     link: {
       light: "gray.700",
-      dark: "purple.200",
+      dark: "gray.300",
     },
     linkHover: {
       light: "gray",

@@ -73,12 +73,12 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           {active.designation}
           <Text
             as="span"
-            color={colorMode === "light" ? "gray.700" : "purple.100"}
+            color={colorMode === "light" ? "gray.700" : "blue.50"}
           >
             &nbsp;@&nbsp;
           </Text>
           <Link
-            color={colorMode === "light" ? "gray.700" : "purple.100"}
+            color={colorMode === "light" ? "gray.700" : "blue.50"}
             href={active.link}
           >
             {active.company}
@@ -98,10 +98,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
               key={index}
               color={EXPERIENCE_DATA.colorVariant.colorSecondary[colorMode]}
             >
-              <ListIcon
-                as={CheckCircleIcon}
-                color={colorMode === "light" ? "gray.700" : "purple.400"}
-              />
+              <ListIcon as={CheckCircleIcon} color={primaryDarkColor} />
               {data}
             </ListItem>
           ))}
@@ -109,7 +106,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
 
         <Box mt={6}>
           {active.skills.map((skill, index) => (
-            <Tag key={index} mr={4} mt={4} colorScheme="purple">
+            <Tag key={index} mr={4} mt={4} colorScheme="gray">
               {skill}
             </Tag>
           ))}
@@ -123,7 +120,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
       <Tabs
         display={["block", "block", "block", "none"]}
         width="100%"
-        colorScheme={colorMode === "light" ? "black" : "teal"}
+        colorScheme={primaryDarkColor}
       >
         <TabList
           height="20"
@@ -134,7 +131,16 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           overflowY="hidden"
         >
           {data.map((tab, index) => (
-            <Tab fontSize="xl" color w="100%" whiteSpace="nowrap" key={index}>
+            <Tab
+              fontSize="xl"
+              color={tab.key === active.key ? "primary" : "blue.0"}
+              w="100%"
+              whiteSpace="nowrap"
+              key={data.key || index}
+              onClick={() => setActive(EXPERIENCE_DATA.data[index])}
+              active={active.key === data.key}
+              colorMode="dark"
+            >
               {tab.company}
             </Tab>
           ))}
@@ -142,7 +148,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
         <TabPanels overflowY="scroll">
           {data.map((tab, index) => (
             <TabPanel p={4} key={index}>
-              <ActiveContent active={tab} />
+              <ActiveContent active={active} />
             </TabPanel>
           ))}
         </TabPanels>
@@ -167,23 +173,19 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           colSpan={1}
           width="200px"
           height="fit-content"
-          borderLeft={`2px solid ${
-            colorMode === "light" ? "lightgray" : "#233554"
-          }`}
+          borderLeft={`2px solid ${"#1e293b"}`}
         >
           {EXPERIENCE_DATA.data.map((data) => (
             <LeftPane
               key={data.key}
               onClick={() => setActive(data)}
               active={active.key === data.key}
-              colorMode={colorMode}
+              colorMode="dark"
             >
               <Text
                 color={
                   active.key === data.key
-                    ? colorMode === "light"
-                      ? "gray.700"
-                      : "primary"
+                    ? "primary"
                     : EXPERIENCE_DATA.colorVariant.colorSecondary[colorMode]
                 }
               >

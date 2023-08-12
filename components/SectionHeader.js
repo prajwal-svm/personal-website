@@ -1,7 +1,7 @@
 import { Box, Heading, Text, useColorMode } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React from "react";
-import { primaryDarkColor } from "../styles/theme";
+import { primaryBackgroundColor, primaryDarkColor } from "../styles/theme";
 
 const IndexSpan = styled.span(
   (props) => `
@@ -37,7 +37,7 @@ const StyledHeading = styled(Heading)`
 
 const colorSecondary = {
   light: "gray.700",
-  dark: "#FAF5FF",
+  dark: "blue.50",
 };
 
 const SectionHeader = ({ sectionIndex, sectionTitle }) => {
@@ -50,10 +50,10 @@ const SectionHeader = ({ sectionIndex, sectionTitle }) => {
         size="2xl"
         lineBg={colorMode === "light" ? "lightgray" : "#322659"}
       >
-        <StyledDiv bgColor={colorMode === "light" ? "white" : "#10002b"}>
-          <IndexSpan color={colorMode === "light" ? "darkgray" : "#9F7AEA"}>
-            0{sectionIndex}.
-          </IndexSpan>
+        <StyledDiv
+          bgColor={colorMode === "light" ? "white" : primaryBackgroundColor}
+        >
+          <IndexSpan color={primaryDarkColor}>0{sectionIndex}.</IndexSpan>
           &nbsp;
           <Text as="span" color={colorSecondary[colorMode]}>
             {sectionTitle}

@@ -4,7 +4,10 @@ import {
   ColorModeProvider,
   useColorMode,
 } from "@chakra-ui/react";
-import customTheme from "../styles/theme";
+import customTheme, {
+  primaryBackgroundColor,
+  primaryDarkColor,
+} from "../styles/theme";
 import { Global, css } from "@emotion/react";
 import { prismLightTheme, prismDarkTheme } from "../styles/prism";
 
@@ -25,6 +28,20 @@ const GlobalStyle = ({ children }) => {
             color: #ccd6f6;
           }
 
+          ::-webkit-scrollbar {
+            width: 4px;
+          }
+
+          ::-webkit-scrollbar-track {
+            width: 6px;
+            background: ${primaryBackgroundColor};
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: ${primaryDarkColor};
+            borderradius: 50px;
+          }
+
           html {
             min-width: 356px;
             scroll-behavior: smooth;
@@ -33,7 +50,9 @@ const GlobalStyle = ({ children }) => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${"#10002b"};
+            background: ${colorMode === "light"
+              ? "white"
+              : primaryBackgroundColor};
           }
         `}
       />
