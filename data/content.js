@@ -274,12 +274,12 @@ export const CONTACT = {
   btnText: "Send",
   btnLoadingText: "Sending...",
   toast: {
-    invalidEmail: `Invalid Email!`,
-    fieldsRequired: `Name, Email & Message are mandatory fields!`,
-    success: `Awesome! I'll to get back to you as soon as possible`,
-    error: `Issue with email service!`,
-    generalError: `Something went wrong!`,
-    captchaError: `hCaptcha token verification failed!`,
+    invalidEmail: `Please enter a valid e-mail!`,
+    fieldsRequired: `Your Name, Email & Message are required!`,
+    success: `Thanks for reaching out to me! I'll get back to you as soon as possible`,
+    error: `There must be some issue with the email service! If the problem persists, please reach out to me on my e-mail!`,
+    generalError: `Hmm! This shouldn't have happened! Please try again later!`,
+    captchaError: `hCaptcha token verification failed! Please try again!`,
   },
   colorSwitch: {
     text: {
