@@ -20,7 +20,6 @@ import React from "react";
 import StackWithTitleWrapper from "./StackWithTitleWrapper";
 import { ChevronRightIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
-import { primaryDarkColor } from "../styles/theme";
 
 const colorSecondary = {
   light: "#ccd6f6",
@@ -30,13 +29,40 @@ const colorSecondary = {
 const ProjectsData = [
   {
     isFeatured: true,
-    title: "Personal Blog",
+    title: "Wisdom",
     imgURI:
-      "https://mllj2j8xvfl0.i.optimole.com/Lsv2lkg.cHDL~36fa1/w:auto/h:auto/q:98/https://s15165.pcdn.co/wp-content/uploads/2018/05/blogger.jpg",
+      "https://raw.githubusercontent.com/Prajwal-S-Venkatesh/wisdom-saas/main/img/dashboard.png",
     content: [
-      "Personal website and blog built using NextJs",
+      "A Saas based productive AI tool for productive content generation",
+      "Support auth using Clerk, image/video/audio/code generation using gpt-3.5 model",
+      "UI powered by shadcn and hosted on Vercel with Github CI/CD",
+    ],
+    tags: ["NextJs", "Clerk", "Shadcn UI", "GPT-3.5 turbo"],
+    githubURI: "https://github.com/Prajwal-S-Venkatesh/wisdom-saas",
+    liveURI: "https://wisdom-ai.prajwalsv.dev/",
+  },
+  {
+    isFeatured: true,
+    title: "CodeHQ",
+    imgURI:
+      "https://i.ibb.co/ZMSJYpd/codehq-pro.png",
+    content: [
+      "A minimal clone of stackblitz, which allows you to write code and run the server in the browser!",
+      "Code editor powered by Codemirror and terminal powered by xterm.js",
+      "Hosted on Raspberry Pi 4B with cloudflare tunnel",
+    ],
+    tags: ["Codemirror", "Vite", "xTerm", "Web Components"],
+    liveURI: "https://codehq.pro/",
+  },
+  {
+    isFeatured: true,
+    title: "Webfolio",
+    imgURI:
+      "https://raw.githubusercontent.com/Prajwal-S-Venkatesh/personal-website/main/assets/home_view.png",
+    content: [
+      "Personal website (a.k.a Webfolio) and blog built using NextJs",
       "Leverages ChakraUIs components and icons to present an exceptional UI",
-      "Hosted on Vercel with Github CI/CD",
+      "Blog content rendered by NextMDX, Comments powered by Utterances and Hosted on Vercel with Github CI/CD",
     ],
     tags: ["Javascript", "ReactJs", "NextJs", "ChakraUI", "EmailJs"],
     githubURI: "https://github.com/Prajwal-S-Venkatesh/personal-website",
@@ -73,18 +99,19 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
       sectionIndex={sectionIndex}
       sectionTitle={sectionTitle}
     >
-      <Grid w="100%" h="100%" templateColumns="repeat(1, 1fr)" gap={6}>
+      <Grid w="100%" h="100%" templateColumns="auto auto" gap={6}>
         {ProjectsData.map((project, index) => (
           <GridItem
             key={index}
             w="100%"
-            minH={["600", "550", "450", "400"]}
+            minH={["800", "750", "650", "450"]}
             h="max-content"
             boxShadow="xl"
             rounded="md"
             backgroundImage={project.imgURI}
             backgroundPosition="center"
-            backgroundSize="contain"
+            backgroundSize="350px 450px"
+            objectFit="contain"
             position="relative"
           >
             <Box
@@ -96,30 +123,36 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
             />
             <Box w="100%" h="100%" p="10" position="absolute" zIndex="2">
               {project.isFeatured && (
-                <Text color={primaryDarkColor} fontSize="md">
+                <Text color={colorSecondary[colorMode]} fontSize="xs">
                   Featured Project
                 </Text>
               )}
-              <Heading color={colorSecondary[colorMode]}>
+              <Heading color={colorSecondary[colorMode]} size="xl">
                 {project.title}
               </Heading>
 
-              <List spacing={3} mt={8}>
+              <List spacing={3} mt={8} size="xs">
                 {project.content.map((text) => (
-                  <ListItem key={text} color={colorSecondary[colorMode]}>
+                  <ListItem key={text} color={colorSecondary[colorMode]} display="flex">
                     <ListIcon
                       as={ChevronRightIcon}
                       color={"primaryDarkColor"}
+                      w="5"
+                      h="5"
                     />
-                    {text}
+                    <Text color={colorSecondary[colorMode]} fontSize="xs" ml="-2.5">
+                      {text}
+                    </Text>
                   </ListItem>
                 ))}
               </List>
 
               <Box mt={4}>
                 {project.tags.map((tag) => (
-                  <Tag colorScheme={"gray"} key={tag} mt={4} mr={4}>
-                    {tag}
+                  <Tag colorScheme={"gray"} key={tag} mt={4} mr={4} size="sm">
+                    <Text color={colorSecondary[colorMode]} fontSize="xs">
+                      {tag}
+                    </Text>
                   </Tag>
                 ))}
               </Box>
@@ -130,7 +163,7 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
                 width="80px"
                 my={6}
               >
-                <Link href={project.githubURI} isExternal>
+                {project.githubURI && <Link href={project.githubURI} isExternal>
                   <Center>
                     <Icon
                       as={FaGithub}
@@ -143,7 +176,7 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
                       }}
                     />
                   </Center>
-                </Link>
+                </Link>}
                 <Link href={project.liveURI} isExternal>
                   <Center>
                     <ExternalLinkIcon
