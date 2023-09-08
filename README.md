@@ -83,7 +83,7 @@ The project supports both light & dark modes. I've managed to use only neutral c
 
 | Name      | Color                                                                 | HEX Code    |
 | :---        |    :----:                                                           | :---        |
-| Background      | ![#ffffff](https://via.placeholder.com/15/0a192f/000000?text=+) | `#10002b`   |
+| Background      | ![#ffffff](https://via.placeholder.com/15/020817/000000?text=+) | `#10002b`   |
 | Title      | ![#ffffff](https://via.placeholder.com/15/ccd6f6/000000?text=+)      | `#ccd6f6`   |
 | Text A      | ![#ffffff](https://via.placeholder.com/15/a0aec0/000000?text=+)     | `#a0aec0`   |
 | Text B      | ![#ffffff](https://via.placeholder.com/15/717c98/000000?text=+)     | `#717c98`   |

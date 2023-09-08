@@ -39,7 +39,7 @@ const StyledBox = styled(Box)`
     margin-right: 17px;
 
     background: transparent;
-    border: ${(props) => `10px double ${primaryDarkColor}`};
+    border: 10px double ${primaryDarkColor};
     right: 0;
 
     position: absolute;
@@ -95,7 +95,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
             hasArrow
             closeDelay={500}
           >
-            <StyledBox pr="10px" colorMode={colorMode}>
+            <StyledBox pr="10px">
               <Image
                 boxSize="250px"
                 src={ABOUT_ME_DATA.img.uri}

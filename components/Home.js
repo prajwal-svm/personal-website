@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <Stack
-      as="main"
+      as="section"
       spacing={8}
       justifyContent="center"
       alignItems="flex-start"
@@ -40,6 +40,7 @@ const Home = () => {
       maxW="750px"
       w="100%"
       px={2}
+      className="section"
     >
       <Box w="100%" h="max(100vh - 155px, 590px)">
         <Flex
@@ -118,16 +119,17 @@ const Home = () => {
           }}
           display="flex"
         >
-          <Box w="100%" display="flex" mt={10} alignItems="center">
+          <Box w="100%" display="flex" mt={10} alignItems="center" justifyContent="center" h={20}>
             <NextLink href="/#about" passHref>
-              <Icon
-                as={BsMouse}
-                m="auto"
-                w={10}
-                h={10}
-                color={HOME_DATA.colorSwitch.scrollMouseIcon[colorMode]}
-                _hover={{ cursor: "pointer" }}
-              />
+              <a>
+                <BsMouse
+                  m="auto"
+                  w={20}
+                  h={20}
+                  color={HOME_DATA.colorSwitch.scrollMouseIcon[colorMode]}
+                  _hover={{ cursor: "pointer" }}
+                />
+              </a>
             </NextLink>
           </Box>
         </MotionBox>

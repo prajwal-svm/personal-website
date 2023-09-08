@@ -35,8 +35,7 @@ const LeftPane = styled.div(
     max-width: 180px;
     margin-left: ${active && "-3px"};
     background: ${active && "rgba(255,255,255,0.16)"};
-    border-left: ${
-      active && `4px solid ${colorMode === "light" ? "gray" : primaryDarkColor}`
+    border-left: ${active && `4px solid ${colorMode === "light" ? "gray" : primaryDarkColor}`
     };
     font-weight: ${active && "600"};
 
@@ -44,9 +43,8 @@ const LeftPane = styled.div(
         cursor: pointer;
         background: rgba(255,255,255,0.16);
         color: white;
-        border-left: ${`4px solid ${
-          colorMode === "light" ? "gray" : primaryDarkColor
-        }`};
+        border-left: ${`4px solid ${colorMode === "light" ? "gray" : primaryDarkColor
+    }`};
         padding-left: 23px;
         margin-left: -3px;
         transition: unset;
@@ -138,8 +136,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
               whiteSpace="nowrap"
               key={data.key || index}
               onClick={() => setActive(EXPERIENCE_DATA.data[index])}
-              active={active.key === data.key}
-              colorMode="dark"
+              active={(active.key === data.key).toString()}
             >
               {tab.company}
             </Tab>

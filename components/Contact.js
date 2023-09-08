@@ -89,7 +89,7 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
 
   useEffect(() => {
     if (token) {
-      ;(async () => {
+      ; (async () => {
         // verify response token server side
         const response =
           (await fetch('/api/hCaptcha', {

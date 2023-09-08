@@ -99,20 +99,51 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
       sectionIndex={sectionIndex}
       sectionTitle={sectionTitle}
     >
-      <Grid w="100%" h="100%" templateColumns="auto auto" gap={6}>
+      <Grid w="100%" h="100%" templateColumns={["1fr", "1fr", "1fr", "1fr 1fr"]} gap={6}>
         {ProjectsData.map((project, index) => (
           <GridItem
             key={index}
             w="100%"
-            minH={["800", "750", "650", "450"]}
+            minH={["450", "450", "400", "450"]}
             h="max-content"
             boxShadow="xl"
             rounded="md"
             backgroundImage={project.imgURI}
             backgroundPosition="center"
-            backgroundSize="350px 450px"
-            objectFit="contain"
+            backgroundSize="100% 100%"
+            objectFit="center"
             position="relative"
+            _hover={{
+              boxShadow: "2xl",
+              transform: "scale(1.05)",
+              "&::after": {
+                content: "''",
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                bg: "#2563ebe0",
+                zIndex: "1",
+              },
+              "&::before": {
+                content: "''",
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                border: "2px solid #2563eb",
+                zIndex: "2",
+              },
+              "& *": {
+                zIndex: "3",
+                color: "gray.50",
+              },
+              "& h2": {
+                textShadow: "0 0 2px #fff",
+              }
+            }}
           >
             <Box
               w="100%"
@@ -131,7 +162,7 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
                 {project.title}
               </Heading>
 
-              <List spacing={3} mt={8} size="xs">
+              <List spacing={2} mt={6} size="xs">
                 {project.content.map((text) => (
                   <ListItem key={text} color={colorSecondary[colorMode]} display="flex">
                     <ListIcon
@@ -149,8 +180,8 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
 
               <Box mt={4}>
                 {project.tags.map((tag) => (
-                  <Tag colorScheme={"gray"} key={tag} mt={4} mr={4} size="sm">
-                    <Text color={colorSecondary[colorMode]} fontSize="xs">
+                  <Tag colorScheme={colorMode === 'light' ? "green" : "gray"} key={tag} mt={4} mr={4} size="sm">
+                    <Text color={colorMode === 'light' ? "green" : colorSecondary[colorMode]} fontSize="xs">
                       {tag}
                     </Text>
                   </Tag>

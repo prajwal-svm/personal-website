@@ -15,6 +15,31 @@ export default function Index() {
   const { colorMode } = useColorMode();
 
   React.useEffect(() => {
+
+    window.addEventListener("load", () => {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show-section");
+            } else {
+              entry.target.classList.remove("show-section");
+            }
+          });
+        },
+        {
+          threshold: 0.25,
+          rootMargin: '0px 0px 0px 0px'
+        }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+    });
+
     if (colorMode && localStorage?.getItem("chakra-ui-color-mode")) {
       return setLoading(false);
     }
@@ -25,6 +50,13 @@ export default function Index() {
       localStorage?.setItem("chakra-ui-color-mode", "dark");
       window.location.reload();
     }
+
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    }
+
   }, []);
 
   if (isLoading)

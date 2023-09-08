@@ -28,7 +28,7 @@ const StyledHeading = styled(Heading)`
     content: "";
     width: 100%;
     height: 1px;
-    background: ${(props) => props.lineBg};
+    background: ${(props) => props.linebg};
     right: 0;
     margin-top: 10px;
     position: absolute;
@@ -48,7 +48,7 @@ const SectionHeader = ({ sectionIndex, sectionTitle }) => {
       <StyledHeading
         as="h2"
         size="2xl"
-        lineBg={colorMode === "light" ? "lightgray" : "#322659"}
+        linebg={colorMode === "light" ? "lightgray" : primaryDarkColor}
       >
         <StyledDiv
           bgColor={colorMode === "light" ? "white" : primaryBackgroundColor}
