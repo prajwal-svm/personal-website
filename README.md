@@ -3,11 +3,7 @@
   <h1 align="center">Prajwal S Venkatesh</h1>
 </p>
 
-<a href="https://prajwalsv.dev/">
-
-![askdm](/assets/home_view.png)
-
-</a>
+![www prajwalsv dev_(iPad Pro)](https://github.com/Prajwal-S-Venkatesh/personal-website/assets/53730619/9196d015-b408-401c-990d-48030cd28ad9)
 
 <p align="center">
   <img src="https://img.shields.io/github/deployments/Prajwal-S-Venkatesh/personal-website/production?label=Vercel&logo=Vercel&logoColor=white"  />
@@ -16,11 +12,16 @@
 </p>
 
 
-Welcome to my `personal-website`'s github repo. This is my webfolio that I created for myself using NextJS and Chakra UI. I've added a blog section where I post about my personal experiences in life, tech, design, finance and much much more. I always wanted to build my own webfolio and publish blogs under my own domain, so here it is finally!! 🚀
+Explore my personal website repository, built using Next.js and Chakra UI. This webfolio features a blog section where I share personal experiences in tech, design, finance, and more. It's a responsive and performant web application with support for both light and dark modes.
 
-## 📄 License
+## ✨ Key Features
 
-The poject is open-sourced under MIT License 🥳. Feel free to clone the repo but make sure to include this [LICENSE](LICENSE) file wherever you use my code. But before you clone make sure you ⭐ this repo.
+- [x] Responsive Design
+- [x] Web Performance
+- [x] Web Analytics
+- [x] PWA Support
+- [x] hCaptcha Support
+- [X] Blog Comments
 
 ## 🛠️ Tech Stack
 
@@ -35,32 +36,13 @@ The poject is open-sourced under MIT License 🥳. Feel free to clone the repo b
 | Hosting     | Vercel      |
 | Comments    | Utterances  |
 
+## 📄 License
 
-## ✨ Features
+This project is open-sourced under the MIT License 🥳. You are welcome to clone the repository, but please remember to include the [LICENSE](LICENSE) file when using my code. And don't forget to show your support by giving this repository a ⭐!
 
-Not features really but here are few sections I've added in the landing page:
+🚀 **[Visit My Website](https://prajwalsv.dev/)**
 
-- Home
-- About
-- Experience
-- Work
-- Contact
-- Blog
-
-> I'm planning to move the blog section under a seperate project and host it under the sub-domain 👉 `blog.prajwalsv.dev` in the near future so that I can integrate certain features and deploy commits independently.
-
-And also design for a few more sections like `Skills`, `Achievments` & `Academics` are in-progress. So... expect a refactor and more sections soon.
-
-NextJs does most of the work for a developer under the hood and performance is by default in every NextJs project! Chakra UI offers a good responsive design system with customizable break points.
-
-- [x] Responsive Design
-- [x] Web Performance
-- [x] Web Analytics
-- [x] PWA Support
-- [x] hCaptcha Support
-- [X] Blog Comments
-
-
+<!--
 ## 💅 Colors
 
 The project supports both light & dark modes. I've managed to use only neutral colors in the light mode but the dark mode comes with primary color and uses less of neutral color and colors that blend well together in dark mode. I've listed all the colors used below in both themes.
@@ -93,11 +75,14 @@ The project supports both light & dark modes. I've managed to use only neutral c
 </td></tr> 
 </table>
 
+
+
 ## 🔮 Future Enhancements
 
-- [ ] Refactor for clean code before project gets bigger
+- [x] Refactor for clean code before project gets bigger
 - [ ] Add dynamic sitemap
-- [ ] Integrate Blog Comments Section
+- [x] Integrate Blog Comments Section
 - [ ] Make content json dependant
 
 ---
+-->
