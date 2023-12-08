@@ -151,6 +151,20 @@ export const EXPERIENCE_DATA = {
   title: "Where I've Worked",
   data: [
     {
+      key: "-1",
+      company: "Illinois Techy",
+      from: "September 2023",
+      to: "December 2023",
+      designation: "Graduate Student Researcher",
+      roleDescription: [
+        "Working on an exciting research project titled \"Distributed Computation for Light Propagation Modeling\" as part of the RES-MATCH program",
+        "Using discrete event simulation tools like the CODES framework and ROSS simulation engine to develop a software model for light propagation across nodes",
+        "Actively involved in the research and development process, presenting findings at the RES-MATCH Expo",
+        "Producing a conference-quality report summarizing the research implications",
+      ],
+      skills: ["C++", "Python", "Discrete Event Simulation", "Distributed Computing", "ROSS Simulation Engine"],
+    },
+    {
       key: "0",
       company: "Certa",
       from: "March 2022",
