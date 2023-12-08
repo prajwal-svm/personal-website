@@ -152,10 +152,11 @@ export const EXPERIENCE_DATA = {
   data: [
     {
       key: "-1",
-      company: "Illinois Techy",
+      company: "Illinois Tech",
       from: "September 2023",
       to: "December 2023",
       designation: "Graduate Student Researcher",
+      link: "https://www.iit.edu/pritzker-institute/res-match",
       roleDescription: [
         "Working on an exciting research project titled \"Distributed Computation for Light Propagation Modeling\" as part of the RES-MATCH program",
         "Using discrete event simulation tools like the CODES framework and ROSS simulation engine to develop a software model for light propagation across nodes",
@@ -168,46 +169,49 @@ export const EXPERIENCE_DATA = {
       key: "0",
       company: "Certa",
       from: "March 2022",
-      to: "December 2022",
+      to: "November 2022",
       designation: "Mid Frontend Engineer",
       roleDescription: [
-        "Working on building a no-code platform",
-        "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-        "Work with a variety of different languages, platforms, frameworks such as JavaScript, TypeScript, React, RTL",
-        "Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis",
+        "Spearheaded the creation of Certa 2.0, our pioneering no-code platform",
+        "Oversaw the transition of codebase from React16 to React18 coupled with updates to React Query from v2 to v4, boosting app responsiveness by 10% and slashing load times by 30%",
+        "Initiated the development of proprietary tools, amplifying test coverage for front-end components from 50% to 90%",
+        "Leveraged technologies to enhance software performance by 40%. As a result, user engagement soared by 50%, attributed mainly to improved UI/UX",
       ],
       link: "https://www.getcerta.com/",
-      skills: ["JavaScript", "TypeScript", "ReactJs", "React Testing Library"],
+      skills: [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "RTL"
+      ],
     },
     {
       key: "1",
       company: "GoGuardian",
-      from: "Aug 2020",
+      from: "August 2021",
       to: "March 2022",
       designation: "Software Engineer",
       roleDescription: [
-        "Develop and deliver core application features for Edulastic",
-        "Work on application feature such as Question Types, Item Banks, Assignments, Assessements, Playlist, Subscription and many more...",
-        "Extensive work on improving application load time and performance",
-        "Write e2e tests for the features developed in each sprint cycle",
+        "Developed and delivered core application features for Edulastic",
+        "Worked on various features including Question Types, ItemBanks, Assignments, Assessments, Playlist, Subscription, and more",
+        "Made significant contributions to improving application load time and performance",
+        "Wrote end-to-end Cypress tests for features developed in each sprint cycle",
       ],
       link: "https://www.goguardian.com/",
       skills: [
         "JavaScript",
-        "ReactJs",
-        "NodeJs",
-        "ExpressJs",
+        "ReactJS",
+        "NodeJS",
+        "ExpressJS",
         "MongoDB",
-        "Firebase",
-        "Redis",
-        "Umzug",
-      ],
+        "Cypress"
+      ]
     },
     {
       key: "2",
       company: "Snapwiz",
-      from: "Aug 2019",
-      to: "Aug 2020",
+      from: "August 2019",
+      to: "August 2020",
       designation: "Associate Software Engineer",
       roleDescription: [
         "Develop and deliver application features for Edulastic",
@@ -221,8 +225,8 @@ export const EXPERIENCE_DATA = {
     {
       key: "3",
       company: "Lycan 3D",
-      from: "Jan 2019",
-      to: "Feb 2019",
+      from: "January 2019",
+      to: "February 2019",
       designation: "Fullstack Developer Intern",
       roleDescription: [
         "Work on solely designing, developing and deploying of an E-Commerce application for the company from ground up",
@@ -246,8 +250,8 @@ export const EXPERIENCE_DATA = {
     {
       key: "4",
       company: "Netchronix",
-      from: "Aug 2018",
-      to: "Nov 2018",
+      from: "August 2018",
+      to: "November 2018",
       designation: "Frontend Intern",
       roleDescription: [
         "Developed and maintained code for in-house and client websites primarily using HTML, CSS, JavaScript, and PHP",
