@@ -90,7 +90,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
           position="relative"
         >
           <Tooltip
-            label=" If you want to see the sunshine, you have to weather the storm!"
+            label="Not all clouds in the sky come to bring darkness, some come to make your sunset more beautiful! :)"
             fontSize="lg"
             hasArrow
             closeDelay={500}
