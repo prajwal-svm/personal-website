@@ -90,7 +90,7 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
           position="relative"
         >
           <Tooltip
-            label="Me giving one last cuddle to Skye before I flew back to USA..."
+            label=" If you want to see the sunshine, you have to weather the storm!"
             fontSize="lg"
             hasArrow
             closeDelay={500}
