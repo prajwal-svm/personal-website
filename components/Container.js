@@ -10,6 +10,7 @@ import {
   MenuList,
   MenuItem,
   IconButton,
+  keyframes
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import styled from "@emotion/styled";
@@ -35,7 +36,6 @@ const StickyNav = styled(Flex)`
   position: sticky;
   z-index: 10;
   top: 0;
-  backdrop-filter: saturate(180%) blur(20px);
   transition: height 0.5s, line-height 0.5s;
 `;
 
@@ -44,8 +44,17 @@ const FlexBox = styled(Box)`
   align-items: center;
 `;
 
+
 const Container = ({ children }) => {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const handleDownloadResume = () => {
+    window.splitbee.track("Button Click", {
+      type: "Resume",
+    });
+
+    window.open(RESUME_URI, "_blank");
+  };
 
   return (
     <>
@@ -53,10 +62,9 @@ const Container = ({ children }) => {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
-        maxWidth="800px"
-        minWidth="356px"
-        width="100%"
-        bg={CONTAINER_DATA.colorVariant.bgColor[colorMode]}
+        maxW={["100%", "100%", "100%", "100%", "calc(100vw - 80px)"]}
+        w="100%"
+        bg="transparent"
         as="nav"
         px={[0, 6, 6]}
         py={2}
@@ -97,7 +105,16 @@ const Container = ({ children }) => {
             />
           </FlexBox>
         </NextLink>
-        <FlexBox display={["none", "none", "none", "block"]}>
+
+        <FlexBox display={["none", "none", "none", "none", "block"]}
+          sx={{
+            background: "#111928bf",
+            padding: "12px 24px",
+            borderRadius: "12px",
+            border: "1px solid #ffffff20",
+            backdropFilter: "blur(16px) saturate(180%)",
+          }}
+        >
           {CONTAINER_DATA.navLinks.map((link, index) => (
             <NextLink key={index} href={link.href} passHref>
               <Button
@@ -117,9 +134,15 @@ const Container = ({ children }) => {
             </NextLink>
           ))}
         </FlexBox>
-        <DarkModeSwitch />
 
-        <Box display={["block", "block", "block", "none"]}>
+        <FlexBox display="flex" gap={4}>
+          <GradientButton
+            display={["none", "block", "Block", "block"]}
+          >RESUME</GradientButton>
+
+          <DarkModeSwitch />
+        </FlexBox>
+        <Box display={["block", "block", "block", "block", "none"]}>
           <Menu>
             <MenuButton
               as={IconButton}
@@ -155,10 +178,10 @@ const Container = ({ children }) => {
         as="main"
         justifyContent="center"
         flexDirection="column"
-        bg={CONTAINER_DATA.colorVariant.bgColor[colorMode]}
         color={CONTAINER_DATA.colorVariant.color[colorMode]}
         px={[0, 4, 4]}
         mt={[4, 8, 8]}
+
       >
         {children}
       </Flex>
@@ -168,3 +191,29 @@ const Container = ({ children }) => {
 };
 
 export default Container;
+
+const gradientAnimation = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
+const GradientButton = ({ children, ...props }) => {
+  return (
+    <Button
+      bg="#004fff"
+      borderRadius="50px"
+      color="white"
+      padding="14px 24px"
+      width="120px"
+      height="50px"
+      boxShadow="0 2px 6px 0 rgb(38 99 235 / 30%)"
+      _hover={{
+        bg: '#007fff',
+      }}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+};

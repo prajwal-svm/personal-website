@@ -8,6 +8,7 @@ import {
   useToast
 } from '@chakra-ui/react'
 import StackWithTitleWrapper from './StackWithTitleWrapper'
+import { primaryBackgroundColor } from "../styles/theme";
 
 import emailjs from 'emailjs-com'
 import { init } from '@emailjs/browser'
@@ -175,6 +176,7 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
       id={id}
       sectionIndex={sectionIndex}
       sectionTitle={sectionTitle}
+      bg={`radial-gradient(circle, ${primaryBackgroundColor}00 80%, transparent 100%)`}
     >
       <Text color={CONTACT.colorSwitch.text[colorMode]} fontSize='xl' mb={8}>
         {CONTACT.message}

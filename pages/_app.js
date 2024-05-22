@@ -56,6 +56,10 @@ const GlobalStyle = ({ children }) => {
             ? "white"
             : primaryBackgroundColor};
 
+            background-image: linear-gradient(to right, #111928bf 1px, transparent 1px), 
+                            linear-gradient(to bottom, #111928bf 1px, transparent 1px);
+          background-size: 100px 100px;
+
             .css-1ieeump{
               background: ${colorMode === "light"
             ? "white"
@@ -89,6 +93,40 @@ const GlobalStyle = ({ children }) => {
             filter: contrast(1.1);
           }
          
+
+          .masonry-grid {
+            display: -webkit-box; 
+            display: -ms-flexbox; 
+            display: flex;
+            margin-left: -30px; 
+            width: auto;
+            
+          }
+          .masonry-grid_column {
+            padding-left: 30px; 
+            background-clip: padding-box;
+          }
+        
+          .masonry-grid_column > div {
+            margin-bottom: 30px;
+          }
+
+          @keyframes shooting-stars {
+            0% {
+              background-position: 0 0;
+            }
+            100% {
+              background-position: -10000px 5000px;
+            }
+          }
+          
+          .shooting-stars {
+            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            background-size: contain;
+            animation: shooting-stars 50s linear infinite;
+          }
+
+
         `}
       />
       {children}

@@ -1,14 +1,16 @@
 import React from "react";
 import {
   Box,
-  Button,
+  Link,
   Flex,
   Heading,
   Icon,
   Stack,
   Text,
-  Tooltip,
+  Divider,
   useColorMode,
+  Tag,
+  keyframes
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
@@ -16,6 +18,20 @@ import { motion } from "framer-motion";
 import { BsMouse } from "react-icons/bs";
 import { HOME_DATA, RESUME_URI } from "../data/content";
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+
+import { FaGithub, FaInstagram, FaLinkedinIn, FaTwitter, FaCodepen } from "react-icons/fa";
+import { MdMailOutline } from "react-icons/md";
+import { FOOTER } from "../data/content";
+import { primaryBackgroundColor } from "../styles/theme";
+
+const LinksToIcon = {
+  FaInstagram: FaInstagram,
+  FaTwitter: FaTwitter,
+  FaGithub: FaGithub,
+  FaLinkedinIn: FaLinkedinIn,
+  MdMailOutline: MdMailOutline,
+  FaCodepen: FaCodepen,
+};
 
 const MotionBox = motion(Box);
 
@@ -37,36 +53,28 @@ const Home = () => {
       justifyContent="center"
       alignItems="flex-start"
       m="60px auto 30px auto"
-      maxW="750px"
+      maxW="calc(100vw - 80px)"
       w="100%"
       px={2}
       className="section"
+      bg={`radial-gradient(circle, ${primaryBackgroundColor}99 80%, transparent 100%)`}
     >
       <Box w="100%" h="max(100vh - 155px, 590px)">
         <Flex
           flexDirection="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          maxWidth="750px"
+          justifyContent="center"
+          alignItems="center"
         >
+          <RainbowTag>Fullstack Engineer</RainbowTag>
+
           <Heading
-            color={HOME_DATA.colorSwitch.titleA[colorMode]}
-            as="h5"
-            size="lg"
-            mb={3}
+            as="h1"
+            fontSize={['3xl', '4xl', '5xl', '6xl']}
+            mb={4}
+            color={HOME_DATA.colorSwitch.titleB[colorMode]}
           >
-            {HOME_DATA.titleA}
+            {HOME_DATA.titleB}
           </Heading>
-          <Tooltip label="Prajwal S Venkateshmurthy">
-            <Heading
-              as="h1"
-              fontSize={['3xl', '4xl', '5xl', '6xl']}
-              mb={4}
-              color={HOME_DATA.colorSwitch.titleB[colorMode]}
-            >
-              {HOME_DATA.titleB}
-            </Heading>
-          </Tooltip>
 
           <RoughNotationGroup>
             <Heading
@@ -75,31 +83,68 @@ const Home = () => {
               mb={6}
               color={HOME_DATA.colorSwitch.titleC[colorMode]}
             >
-              Weaving the web, one pixel at a time...
+              Weaving innovation into every pixel...
             </Heading>
             <Text
               color={HOME_DATA.colorSwitch.titleDescription[colorMode]}
               fontSize="xl"
               mb={8}
               lineHeight={9}
+              maxW="800px"
+              align="center"
             >
-              Originally from Bengaluru, now a Chicago resident. I have a
-              passion for molding pixels into perfection. I&apos;ve been
-              reshaping online landscapes for over three years. Beyond the codes
-              and clouds, I&apos;m navigating the academic corridors at Illinois
-              Tech, delving into the frontiers of software development in my
-              master&apos;s quest.
+
+              Prajwal is a  <RoughNotation type="underline" show="true" >
+                skilled software engineer
+              </RoughNotation>
+              &nbsp; with a passion for building high-quality web applications. He has a proven ability to seamlessly transition between frontend and backend development, bringing projects to life from &nbsp;
+              <RoughNotation type="underline" show="true" >
+                concept to completion.
+              </RoughNotation>
+              &nbsp;
+              His expertise spans a range of technologies, enabling him to build robust and
+              &nbsp;
+              <RoughNotation type="underline" show="true" >
+                user-centric solutions
+              </RoughNotation> &nbsp; for both web and mobile platforms.
             </Text>
           </RoughNotationGroup>
 
-          <Button
-            colorScheme={HOME_DATA.colorSwitch.ctaBtn[colorMode]}
-            variant={HOME_DATA.colorSwitch.ctaVariant[colorMode]}
-            size="lg"
-            onClick={handleDownloadResume}
-          >
-            {HOME_DATA.ctaText}
-          </Button>
+          <Divider
+            orientation="horizontal"
+            borderColor={FOOTER.colorSwitch.divider[colorMode]}
+            maxW="800px"
+          />
+
+          <Flex pb={2} mt={8} w="320px" justifyContent="space-between" alignItems="center" gap={6}>
+            {FOOTER.socialMediaHandles.map((item, index) => (
+              <Link
+                key={index}
+                color={FOOTER.colorSwitch.link[colorMode]}
+                href={item.href}
+                // sx={{
+                //   border: '1px solid #fff',
+                //   borderRadius: '12px',
+                //   padding: '10px',
+                //   width: '60px',
+                //   height: '60px',
+                //   display: 'flex',
+                //   justifyContent: 'center',
+                //   alignItems: 'center',
+                // }}
+                isExternal
+              >
+                <Icon
+                  w={8}
+                  h={8}
+                  as={LinksToIcon[item.icon]}
+                  color={FOOTER.colorSwitch.link[colorMode]}
+                  _hover={{ color: FOOTER.colorSwitch.linkHover[colorMode] }}
+                />
+              </Link>
+            ))}
+          </Flex>
+
         </Flex>
         <MotionBox
           as="aside"
@@ -139,3 +184,47 @@ const Home = () => {
 };
 
 export default Home;
+
+const rotateGradient = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
+const RainbowTag = ({ children, ...props }) => {
+  return (
+    <Box
+      p="2px"
+      borderRadius="full"
+      bg="linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet)"
+      bgSize="200% 200%"
+      animation={`${rotateGradient} 10s linear infinite`}
+      display={
+        [
+          "none",
+          "inline-block",
+          "inline-block",
+          "inline-block",
+        ]
+      }
+    >
+      <Tag
+        bg="black"
+        color="white"
+        px={4}
+        py={2}
+        borderRadius="full"
+        fontSize="sm"
+        {...props}
+      >
+        {children}
+      </Tag>
+    </Box>
+  );
+};

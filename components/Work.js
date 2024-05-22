@@ -7,12 +7,14 @@ import {
   GridItem,
   Heading,
   Icon,
+  Image,
   Link,
   List,
   ListIcon,
   ListItem,
   Tag,
   Text,
+  Tooltip,
   color,
   useColorMode,
 } from "@chakra-ui/react";
@@ -20,6 +22,8 @@ import React from "react";
 import StackWithTitleWrapper from "./StackWithTitleWrapper";
 import { ChevronRightIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
+import { primaryBackgroundColor, primaryDarkColor } from "../styles/theme";
+import { skillIconMap } from "../data/content";
 
 const colorSecondary = {
   light: "#ccd6f6",
@@ -28,10 +32,32 @@ const colorSecondary = {
 
 const ProjectsData = [
   {
-    isFeatured: true,
+    title: "Webfolio",
+    imgURI:
+      "https://i.ibb.co/YpHPwNK/192-168-141-4-3000-i-Pad-Pro.png",
+    content: [
+      "My portfolio website (Webfolio) integrated with blogging feature built using NextJs",
+      "Leverages ChakraUIs components and icons to present an exceptional UI",
+      "Blog content rendered by NextMDX, Comments powered by Utterances and Hosted on Vercel with Github CI/CD",
+    ],
+    tags: ["Javascript", "ReactJs", "NextJs", "ChakraUI", "EmailJs"],
+    githubURI: "https://github.com/Prajwal-S-Venkatesh/personal-website",
+    liveURI: "https://prajwalsv.dev/",
+  },
+  {
+    title: "StartupSync",
+    imgURI:
+      "https://i.ibb.co/42yCR24/192-168-141-4-3001-i-Pad-Pro.png",
+    content: [
+      "A simple web app that tracks the global and country-wise covid-19 cases.",
+    ],
+    tags: ["Typescript", "NextJs", "OpenAI API", "Elastic Search",  "SERP API", "Radix UI", "Leaflet", "PostgreSQL"],
+    githubURI: "https://github.com/Prajwal-S-Venkatesh/StartupSync"
+  },
+  {
     title: "Wisdom",
     imgURI:
-      "https://raw.githubusercontent.com/Prajwal-S-Venkatesh/wisdom-saas/main/img/dashboard.png",
+      "https://i.ibb.co/JxC96LT/wisdom-ai-prajwalsv-dev-i-Pad-Pro.png",
     content: [
       "A Saas based productive AI tool for productive content generation",
       "Support auth using Clerk, image/video/audio/code generation using gpt-3.5 model",
@@ -42,7 +68,16 @@ const ProjectsData = [
     liveURI: "https://wisdom-ai.prajwalsv.dev/",
   },
   {
-    isFeatured: true,
+    title: "Supply Stream",
+    imgURI:
+      "https://i.ibb.co/y58g6fr/192-168-141-4-3000-i-Pad-Pro-1.png",
+    content: [
+      "A simple platform that allows users to consume, upload, import, create and record media content.",
+    ],
+    tags: ["Javascript", "NodeJs", "Ejs", "Tailwind CSS", "Vimeo API"],
+    githubURI: "https://github.com/Prajwal-S-Venkatesh/stripe-go-api",
+  },
+  {
     title: "CodeHQ",
     imgURI:
       "https://i.ibb.co/ZMSJYpd/codehq-pro.png",
@@ -55,33 +90,16 @@ const ProjectsData = [
     liveURI: "https://codehq.pro/",
   },
   {
-    isFeatured: true,
-    title: "Webfolio",
+    title: "Play-On-Scroll",
     imgURI:
-      "https://raw.githubusercontent.com/Prajwal-S-Venkatesh/personal-website/main/assets/home_view.png",
+      "https://i.ibb.co/JQD98wZ/wsl-localhost-Ubuntu-home-psv-wsl2-codespace-apple-airpods-website-clone-index-html-i-Pad-Pro.png",
     content: [
-      "Personal website (a.k.a Webfolio) and blog built using NextJs",
-      "Leverages ChakraUIs components and icons to present an exceptional UI",
-      "Blog content rendered by NextMDX, Comments powered by Utterances and Hosted on Vercel with Github CI/CD",
+      "Control the video playback speed based on the mouse scroll position on the website.",
     ],
-    tags: ["Javascript", "ReactJs", "NextJs", "ChakraUI", "EmailJs"],
-    githubURI: "https://github.com/Prajwal-S-Venkatesh/personal-website",
-    liveURI: "https://prajwalsv.dev/",
+    tags: ["HTML5", "CSS3", "Javascript"],
+    githubURI: "https://github.com/Prajwal-S-Venkatesh/Play-On-Scroll"
   },
-  {
-    isFeatured: true,
-    title: "Stripe Go API",
-    imgURI:
-      "https://www.menabytes.com/wp-content/uploads/2019/02/Stripe-Logo.png",
-    content: [
-      "Backend APIs for Stripe Payment Gateway Integration implemented in GoLang",
-      "Currently supports 4 simple APIs",
-      "Can create charge, capture the charge, create refund and get a list of all charges",
-    ],
-    tags: ["Go", "MakeFile", "Stripe-Go", "Mux", "Postman"],
-    githubURI: "https://github.com/Prajwal-S-Venkatesh/stripe-go-api",
-    liveURI: "https://github.com/Prajwal-S-Venkatesh/stripe-go-api",
-  },
+ 
 ];
 
 const Work = ({ id, sectionIndex, sectionTitle }) => {
@@ -98,132 +116,120 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
       id={id}
       sectionIndex={sectionIndex}
       sectionTitle={sectionTitle}
+      maxWidth="calc(100vw - 200px)"
     >
-      <Grid w="100%" h="100%" templateColumns={["1fr", "1fr", "1fr", "1fr 1fr"]} gap={6}>
+
+      <Grid w="100%" h="100%" templateColumns={["1fr", "1fr", "1fr", "1fr", "1fr 1fr", "1fr 1fr 1fr"]} gap={6}>
         {ProjectsData.map((project, index) => (
           <GridItem
             key={index}
+            border="1px solid #ffffff1a"
+            boxShadow="0 0 #0000,0 0 #0000,0 8px 16px rgb(0 0 0/0.4)"
+            p="24px"
+            borderRadius="16px"
             w="100%"
-            minH={["450", "450", "400", "450"]}
             h="max-content"
-            boxShadow="xl"
-            rounded="md"
-            backgroundImage={project.imgURI}
-            backgroundPosition="center"
-            backgroundSize="100% 100%"
-            objectFit="center"
-            position="relative"
-            _hover={{
-              boxShadow: "2xl",
-              transform: "scale(1.05)",
-              "&::after": {
-                content: "''",
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                bg: "#2563ebe0",
-                zIndex: "1",
-              },
-              "&::before": {
-                content: "''",
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                border: "2px solid #2563eb",
-                zIndex: "2",
-              },
-              "& *": {
-                zIndex: "3",
-                color: "gray.50",
-              },
-              "& h2": {
-                textShadow: "0 0 2px #fff",
-              }
-            }}
+            bg={primaryBackgroundColor}
           >
             <Box
               w="100%"
-              h="100%"
-              bg="#2563ebe0"
-              position="absolute"
-              zIndex="1"
-            />
-            <Box w="100%" h="100%" p="10" position="absolute" zIndex="2">
-              {project.isFeatured && (
-                <Text color={colorSecondary[colorMode]} fontSize="xs">
-                  Featured Project
-                </Text>
-              )}
-              <Heading color={colorSecondary[colorMode]} size="xl">
-                {project.title}
-              </Heading>
+              h="340px"
+              p="1"
+              zIndex="2"
+              overflow="hidden"
+              borderRadius="16px"
+              mb={2}
+              bg="#13162d"
+              bgImage='url("https://i.ibb.co/dB2V3vC/bg.png")'
+              bgSize="cover"
+              bgPos="center"
+              bgRepeat="no-repeat"
+              position="relative"
+              display="flex"
+              justifyContent="center"
+            >
+              <Image src={project.imgURI} alt={project.title} width={["340px", "340px", "340px", "340px", "280px", "280px", "380px"]} bottom={0} position="absolute" borderRadius="16px 16px 0 0" />
+            </Box>
 
-              <List spacing={2} mt={6} size="xs">
-                {project.content.map((text) => (
-                  <ListItem key={text} color={colorSecondary[colorMode]} display="flex">
-                    <ListIcon
-                      as={ChevronRightIcon}
-                      color={"primaryDarkColor"}
-                      w="5"
-                      h="5"
+            <Text ml={1} mt={8} as="h1" color="#fff" fontSize="26px" fontWeight="bold">
+              {project.title}
+            </Text>
+            <Text ml={1} color={colorSecondary[colorMode]} fontSize="20px" mt={2}>
+              {project.content[0]}
+            </Text>
+
+
+            <Flex mt={4} justify="space-between">
+              <Flex mt={4}>
+                {project.tags.map((skill, index) => (
+                  <Tooltip key={index} label={skill} aria-label={skill}>
+                    <Image
+                      key={index}
+                      size="sm"
+                      width={10}
+                      height={10}
+                      src={skillIconMap[skill]}
+                      alt={skill}
+                      sx={{
+                        cursor: "pointer",
+                        padding: "4px",
+                        borderRadius: "50%",
+                        marginLeft: "-5px",
+                        border: "1px solid #ffffff50",
+                        background: "#3e3f46",
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                        },
+                      }}
                     />
-                    <Text color={colorSecondary[colorMode]} fontSize="xs" ml="-2.5">
-                      {text}
-                    </Text>
-                  </ListItem>
+                  </Tooltip>
                 ))}
-              </List>
-
-              <Box mt={4}>
-                {project.tags.map((tag) => (
-                  <Tag colorScheme={colorMode === 'light' ? "green" : "gray"} key={tag} mt={4} mr={4} size="sm">
-                    <Text color={colorMode === 'light' ? "green" : colorSecondary[colorMode]} fontSize="xs">
-                      {tag}
-                    </Text>
-                  </Tag>
-                ))}
-              </Box>
+              </Flex>
 
               <Flex
                 alignItems="center"
-                justifyContent="space-between"
+                justifyContent="flex-end"
                 width="80px"
+                gap="6"
                 my={6}
               >
-                {project.githubURI && <Link href={project.githubURI} isExternal>
-                  <Center>
-                    <Icon
-                      as={FaGithub}
-                      mx="2px"
-                      w={6}
-                      h={6}
-                      color={colorSecondary[colorMode]}
-                      _hover={{
-                        color: "gray.700",
-                      }}
-                    />
-                  </Center>
-                </Link>}
-                <Link href={project.liveURI} isExternal>
+                {project.githubURI &&
+                  <Tooltip label="Github" aria-label="View on Github" hasArrow>
+                    <Link href={project.githubURI} isExternal>
+                      <Center>
+                        <Icon
+                          as={FaGithub}
+                          mx="2px"
+                          w={6}
+                          h={6}
+                          color={colorSecondary[colorMode]}
+                          _hover={{
+                            color: primaryDarkColor,
+                          }}
+                        />
+                      </Center>
+                    </Link>
+                  </Tooltip>
+                }
+                {project.liveURI && <Link href={project.liveURI} isExternal>
                   <Center>
                     <ExternalLinkIcon
                       mx="2px"
                       w={6}
                       h={6}
                       color={colorSecondary[colorMode]}
-                      _hover={{ color: "gray.700" }}
+                      _hover={{ color: primaryDarkColor }}
                     />
                   </Center>
-                </Link>
+                </Link>}
               </Flex>
-            </Box>
+            </Flex>
+
+
           </GridItem>
         ))}
       </Grid>
+
       <Center w="100%">
         <Button
           borderColor={colorMode === "light" ? "blue.500" : "initial"}

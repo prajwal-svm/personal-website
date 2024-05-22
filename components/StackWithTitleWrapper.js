@@ -2,7 +2,7 @@ import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import SectionHeader from './SectionHeader'
 
-const StackWithTitleWrapper = ({ as, id, hideTitle, sectionIndex, sectionTitle, children }) => {
+const StackWithTitleWrapper = ({ as, id, hideTitle, sectionIndex, sectionTitle, maxWidth, children }) => {
 
     return <Stack
         as={as || 'section'}
@@ -11,7 +11,7 @@ const StackWithTitleWrapper = ({ as, id, hideTitle, sectionIndex, sectionTitle, 
         justifyContent="center"
         alignItems="flex-start"
         m="60px auto 30px auto"
-        maxWidth="750px"
+        maxWidth={maxWidth || "750px"}
         w="100%"
         pt="6rem"
         px={2}>

@@ -8,9 +8,10 @@ import {
   Flex,
   useColorMode,
 } from "@chakra-ui/react";
-import { FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { MdMailOutline } from "react-icons/md";
+import { FaGithub, FaInstagram, FaLinkedinIn, FaTwitter, FaCodepen } from "react-icons/fa";
+import { MdMailOutline, MdWeb, MdDescription } from "react-icons/md";
 import { FOOTER } from "../data/content";
+import { primaryBackgroundColor } from "../styles/theme";
 
 const LinksToIcon = {
   FaInstagram: FaInstagram,
@@ -18,6 +19,7 @@ const LinksToIcon = {
   FaGithub: FaGithub,
   FaLinkedinIn: FaLinkedinIn,
   MdMailOutline: MdMailOutline,
+  FaCodepen: FaCodepen,
 };
 
 const Footer = () => {
@@ -28,11 +30,12 @@ const Footer = () => {
       justifyContent="center"
       alignItems="center"
       m="auto"
-      maxWidth="750px"
+      maxWidth="fit"
       w="100%"
       pt="1rem"
       px={2}
       pb={2}
+      bg={primaryBackgroundColor + "99"}
     >
       <Divider
         mb={4}

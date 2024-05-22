@@ -3,6 +3,7 @@ import Head from "next/head";
 import Container from "../components/Container";
 import Home from "../components/Home";
 import AboutMe from "../components/AboutMe";
+import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Work from "../components/Work";
 import Contact from "../components/Contact";
@@ -78,8 +79,9 @@ export default function Index() {
     <Container>
       <Head>
         <title>Home - Prajwal S Venkateshmurthy</title>
-      </Head>
+      </Head> 
       <Home />
+      <Skills id="skills" sectionTitle="Skills" />
       <AboutMe sectionIndex={1} id="about" sectionTitle="About Me" />
       <Experience
         sectionIndex={2}

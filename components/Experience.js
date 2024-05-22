@@ -1,4 +1,5 @@
 import {
+  Image,
   Box,
   Grid,
   GridItem,
@@ -15,13 +16,14 @@ import {
   Tag,
   Text,
   useColorMode,
+  Tooltip,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 import StackWithTitleWrapper from "./StackWithTitleWrapper";
-import { CheckCircleIcon } from "@chakra-ui/icons";
-import { primaryDarkColor } from "../styles/theme";
-import { EXPERIENCE_DATA } from "../data/content";
+import { CheckCircleIcon, ExternalLinkIcon, LinkIcon } from "@chakra-ui/icons";
+import { primaryBackgroundColor, primaryDarkColor } from "../styles/theme";
+import { EXPERIENCE_DATA, skillIconMap } from "../data/content";
 
 const LeftPane = styled.div(
   ({ active, colorMode }) => `
@@ -32,7 +34,7 @@ const LeftPane = styled.div(
     border-radius: 0 8px 8px 0;
     margin-top: 2px;
     line-height: 46px;
-    max-width: 180px;
+    max-width: 200px;
     margin-left: ${active && "-3px"};
     background: ${active && "rgba(255,255,255,0.16)"};
     border-left: ${active && `4px solid ${colorMode === "light" ? "gray" : primaryDarkColor}`
@@ -69,19 +71,18 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           color={EXPERIENCE_DATA.colorVariant.titleColor[colorMode]}
         >
           {active.designation}
-          <Text
-            as="span"
-            color={colorMode === "light" ? "gray.700" : "blue.50"}
-          >
-            &nbsp;@&nbsp;
-          </Text>
-          <Link
-            color={colorMode === "light" ? "gray.700" : "blue.50"}
-            href={active.link}
-          >
-            {active.company}
-          </Link>
         </Heading>
+
+
+        <Link
+          color={colorMode === "light" ? "gray.700" : "blue.50"}
+          href={active.link}
+          fontSize={"xl"}
+          ml="1.5"
+        >
+          {active.company}
+        </Link>
+
         <Text
           mb="4"
           px="1.5"
@@ -102,11 +103,54 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           ))}
         </List>
 
-        <Box mt={6}>
+        {active.links && <Box mt={6}>
+          {active.links.map((linkObj, index) => (
+            <Link
+              key={index}
+              variant="solid"
+              colorScheme="primary"
+              mr={2}
+              mb={2}
+              href={linkObj.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              sx={{
+                textDecoration: "none",
+                borderRadius: "50px",
+                padding: "6px 10px",
+                background: "gray.800",
+                color: "white",
+              }}
+            >
+              {linkObj.label}
+              <ExternalLinkIcon ml={2} mt={-1.5} w="4" h='4' />
+            </Link>
+          ))}
+        </Box>}
+
+        <Box mt={8} display='flex' flexWrap="wrap">
           {active.skills.map((skill, index) => (
-            <Tag key={index} mr={4} mt={4} colorScheme="gray">
-              {skill}
-            </Tag>
+            <Tooltip key={index} label={skill} aria-label={skill}>
+              <Image
+                key={index}
+                size="sm"
+                width={12}
+                height={12}
+                src={skillIconMap[skill]}
+                alt={skill}
+                sx={{
+                  cursor: "pointer",
+                  padding: "6px",
+                  borderRadius: "50%",
+                  marginLeft: "-5px",
+                  border: "1px solid #ffffff50",
+                  background: "#3e3f46",
+                  "&:hover": {
+                    transform: "scale(1.1)",
+                  },
+                }}
+              />
+            </Tooltip>
           ))}
         </Box>
       </>
@@ -127,10 +171,11 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
           flexDirection="row"
           overflowX="scroll"
           overflowY="hidden"
+          width="100%"
         >
           {data.map((tab, index) => (
             <Tab
-              fontSize="xl"
+              fontSize="lg"
               color={tab.key === active.key ? "primary" : "blue.0"}
               w="100%"
               whiteSpace="nowrap"
@@ -168,7 +213,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
       >
         <GridItem
           colSpan={1}
-          width="200px"
+          width="220px"
           height="fit-content"
           borderLeft={`2px solid ${"#1e293b"}`}
         >
