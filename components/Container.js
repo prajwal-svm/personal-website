@@ -140,7 +140,7 @@ const Container = ({ children }) => {
             display={["none", "block", "Block", "block"]}
           >RESUME</GradientButton>
 
-          <DarkModeSwitch />
+          {/* <DarkModeSwitch /> */}
         </FlexBox>
         <Box display={["block", "block", "block", "block", "none"]}>
           <Menu>
@@ -163,13 +163,13 @@ const Container = ({ children }) => {
                   </MenuItem>
                 </NextLink>
               ))}
-              <MenuItem
+              {/* <MenuItem
                 color={CONTAINER_DATA.colorVariant.color[colorMode]}
                 icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
                 onClick={toggleColorMode}
               >
                 Toggle Theme
-              </MenuItem>
+              </MenuItem> */}
             </MenuList>
           </Menu>
         </Box>

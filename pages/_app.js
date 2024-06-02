@@ -121,7 +121,13 @@ const GlobalStyle = ({ children }) => {
           }
           
           .shooting-stars {
-            background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat !important;
+            background-size: contain;
+            animation: shooting-stars 50s linear infinite;
+          }
+
+          .pattern {
+            background: transparent url('https://www.transparenttextures.com/patterns/inspiration-geometry.png') repeat !important;
             background-size: contain;
             animation: shooting-stars 50s linear infinite;
           }

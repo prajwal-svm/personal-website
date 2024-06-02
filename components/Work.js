@@ -49,7 +49,7 @@ const ProjectsData = [
     imgURI:
       "https://i.ibb.co/42yCR24/192-168-141-4-3001-i-Pad-Pro.png",
     content: [
-      "A simple web app that tracks the global and country-wise covid-19 cases.",
+      "A platform for finding and connecting with startups, sponsors and investors.",
     ],
     tags: ["Typescript", "NextJs", "OpenAI API", "Elastic Search",  "SERP API", "Radix UI", "Leaflet", "PostgreSQL"],
     githubURI: "https://github.com/Prajwal-S-Venkatesh/StartupSync"

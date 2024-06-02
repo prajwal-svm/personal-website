@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {
+  Box,
   Button,
   Input,
   Text,
   Textarea,
   useColorMode,
-  useToast
+  useToast,
 } from '@chakra-ui/react'
 import StackWithTitleWrapper from './StackWithTitleWrapper'
 import { primaryBackgroundColor } from "../styles/theme";
@@ -172,11 +173,14 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
   }, [email, isLoading, message, name, subject, toast, token, setToken])
 
   return (
-    <StackWithTitleWrapper
+  <Box
+  className="pattern"
+  >
+      <StackWithTitleWrapper
       id={id}
       sectionIndex={sectionIndex}
       sectionTitle={sectionTitle}
-      bg={`radial-gradient(circle, ${primaryBackgroundColor}00 80%, transparent 100%)`}
+      bg={`radial-gradient(circle, ${primaryBackgroundColor}99 100%, transparent 100%)`}
     >
       <Text color={CONTACT.colorSwitch.text[colorMode]} fontSize='xl' mb={8}>
         {CONTACT.message}
@@ -242,6 +246,7 @@ const Contact = ({ id, sectionIndex, sectionTitle }) => {
         {CONTACT.btnText}
       </Button>
     </StackWithTitleWrapper>
+  </Box>
   )
 }
 

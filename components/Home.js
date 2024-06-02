@@ -59,7 +59,7 @@ const Home = () => {
       className="section"
       bg={`radial-gradient(circle, ${primaryBackgroundColor}99 80%, transparent 100%)`}
     >
-      <Box w="100%" h="max(100vh - 155px, 590px)">
+      <Box w="100%" h="max(100vh - 155px, 600px)">
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -212,6 +212,17 @@ const RainbowTag = ({ children, ...props }) => {
           "inline-block",
           "inline-block",
         ]
+      }
+      mb={4}
+      mr={
+        {
+          xs: "auto",
+          sm: "auto",
+          md: 0,
+          lg: 0,
+          xl: 0,
+          "2xl": 0,
+        }
       }
     >
       <Tag
