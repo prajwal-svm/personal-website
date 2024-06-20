@@ -163,7 +163,8 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
         display={["block", "block", "block", "none"]}
         width="100%"
         colorScheme={primaryDarkColor}
-        height="max(100vh, 600px)"
+        height="max(100vh, 800px)"
+        mb={6}
       >
         <TabList
           height="20"
