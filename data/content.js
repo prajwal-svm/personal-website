@@ -61,7 +61,7 @@ export const CONTAINER_DATA = {
 
 export const HOME_DATA = {
   titleA: "Hey, I'm ",
-  titleB: "Prajwal S Venkateshmurthy",
+  titleB: "Prajwal Murthy",
   ctaText: "Hire Me",
   colorSwitch: {
     titleA: {
@@ -128,6 +128,9 @@ export const EXPERIENCE_DATA = {
       designation: "Fullstack Engineering Intern",
       link: "https://supplyframe.com/",
       roleDescription: [
+        "Remediated critical cross-site scripting (XSS) vulnerabilities within the Hackaday.io platform, significantly boosting its security framework and ensuring a safer user experience.",
+        "Led the comprehensive migration of Socket.io packages (including client, server, redis, and parser), along with the necessary updates to Express-compatible plugins.",
+        // "Spearheaded the development of key components for the internal design system 'Fragments' within the Supplyframe IQ app."
       ],
       skills: [
         "HTML5",

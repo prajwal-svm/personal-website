@@ -12,12 +12,15 @@ import { primaryBackgroundColor } from "../styles/theme";
 
 export default function Index() {
   const [isLoading, setLoading] = React.useState(true);
+  const [isDarkMode, setDarkMode] = React.useState(false);
 
   const { colorMode } = useColorMode();
 
   React.useEffect(() => {
 
     window.addEventListener("load", () => {
+      setLoading(false);
+
       const sections = document.querySelectorAll("section");
       const observer = new IntersectionObserver(
         (entries) => {
@@ -42,7 +45,7 @@ export default function Index() {
     });
 
     if (colorMode && localStorage?.getItem("chakra-ui-color-mode")) {
-      return setLoading(false);
+      return setDarkMode(false);
     }
     if (
       colorMode === "dark" &&
@@ -60,26 +63,24 @@ export default function Index() {
 
   }, []);
 
-  if (isLoading)
+  if (isLoading || isDarkMode) {
     return (
       <Flex color="white">
         <Center w="100vw" h="100vh" bg={primaryBackgroundColor}>
-          <Spinner
-            thickness="10px"
-            speed="0.65s"
-            emptyColor="gray.100"
-            color="blue.500"
-            size="xl"
-          />
+          <div className="spinner">
+            <div></div>
+            <div></div>
+          </div>
         </Center>
       </Flex>
     );
+  }
 
   return (
     <Container>
       <Head>
-        <title>Home - Prajwal S Venkateshmurthy</title>
-      </Head> 
+        <title>Home - Prajwal Murthy</title>
+      </Head>
       <Home />
       <Skills id="skills" sectionTitle="Skills" />
       <AboutMe sectionIndex={1} id="about" sectionTitle="About Me" />

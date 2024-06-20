@@ -71,7 +71,6 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
       maxWidth="1024px"
     >
       <Grid
-        templateRows="repeat(2, 1fr)"
         templateColumns="repeat(5, 1fr)"
         gap={4}
       >
@@ -83,6 +82,15 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
             textAlign="justify"
           >
             {ABOUT_ME_DATA.textA}
+          </Text>
+          <Text
+            color={ABOUT_ME_DATA.colorSwitch.text[colorMode]}
+            fontSize="xl"
+            mt={5}
+            display={["block", "block", "block", "none"]}
+          >
+            As the digital landscape continues to evolve, I remain committed to
+            pushing boundaries, ever eager to learn, adapt, and innovate!
           </Text>
         </GridItem>
         <GridItem
@@ -107,7 +115,9 @@ const AboutMe = ({ id, sectionIndex, sectionTitle }) => {
             </StyledBox>
           </Tooltip>
         </GridItem>
-        <GridItem colSpan={5}>
+        <GridItem
+        display={["none", "none", "none", "block"]}
+        colSpan={5}>
           <Text
             color={ABOUT_ME_DATA.colorSwitch.text[colorMode]}
             fontSize="xl"

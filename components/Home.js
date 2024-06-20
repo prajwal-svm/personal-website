@@ -55,23 +55,33 @@ const Home = () => {
       m="60px auto 30px auto"
       maxW="calc(100vw - 80px)"
       w="100%"
-      px={2}
       className="section"
       bg={`radial-gradient(circle, ${primaryBackgroundColor}99 80%, transparent 100%)`}
     >
-      <Box w="100%" h="max(100vh - 155px, 600px)">
+      <Box w="100%" h={{
+        xs: "850px",
+        sm: "max(100vh - 155px, 600px)",
+      }}>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
         >
-          <RainbowTag>Fullstack Engineer</RainbowTag>
+          <RainbowTag>Software Engineer</RainbowTag>
 
           <Heading
             as="h1"
             fontSize={['3xl', '4xl', '5xl', '6xl']}
             mb={4}
             color={HOME_DATA.colorSwitch.titleB[colorMode]}
+            width={{
+              xs: "100%",
+              sm: "auto",
+            }}
+            align={{
+              xs: "justify",
+              sm: "center"
+            }}
           >
             {HOME_DATA.titleB}
           </Heading>
@@ -90,8 +100,14 @@ const Home = () => {
               fontSize="xl"
               mb={8}
               lineHeight={9}
-              maxW="800px"
-              align="center"
+              maxW={{
+                xs: "100%",
+                sm: "800px"
+              }}
+              align={{
+                xs: "justify",
+                sm: "center"
+              }}
             >
 
               Prajwal is a  <RoughNotation type="underline" show="true" >
@@ -162,7 +178,10 @@ const Home = () => {
             opacity: 0,
             delay: 5,
           }}
-          display="flex"
+          display={{
+            xs: "none",
+            sm: "flex"
+          }}
         >
           <Box w="100%" display="flex" mt={10} alignItems="center" justifyContent="center" h={20}>
             <NextLink href="/#about" passHref>
@@ -208,6 +227,7 @@ const RainbowTag = ({ children, ...props }) => {
       display={
         [
           "none",
+          "none",
           "inline-block",
           "inline-block",
           "inline-block",
@@ -217,7 +237,7 @@ const RainbowTag = ({ children, ...props }) => {
       mr={
         {
           xs: "auto",
-          sm: "auto",
+          sm: 0,
           md: 0,
           lg: 0,
           xl: 0,

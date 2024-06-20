@@ -163,6 +163,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
         display={["block", "block", "block", "none"]}
         width="100%"
         colorScheme={primaryDarkColor}
+        height="max(100vh, 600px)"
       >
         <TabList
           height="20"
@@ -207,7 +208,8 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
       <Grid
         display={["none", "none", "none", "grid"]}
         width="100%"
-        minH="500px"
+        minH="600px"
+        height="max(100vh, 600px)"
         templateColumns="repeat(5, 1fr)"
         pt={12}
       >

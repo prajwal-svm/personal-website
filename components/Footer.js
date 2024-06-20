@@ -9,10 +9,9 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { FaGithub, FaInstagram, FaLinkedinIn, FaTwitter, FaCodepen } from "react-icons/fa";
-import { MdMailOutline, MdWeb, MdDescription } from "react-icons/md";
+import { MdMailOutline } from "react-icons/md";
 import { FOOTER } from "../data/content";
 import { primaryBackgroundColor } from "../styles/theme";
-import { EditIcon, StarIcon } from "@chakra-ui/icons";
 
 const LinksToIcon = {
   FaInstagram: FaInstagram,
@@ -66,7 +65,7 @@ const Footer = () => {
         borderColor={FOOTER.colorSwitch.divider[colorMode]}
       />
       <Center w="100%" color={FOOTER.colorSwitch.notes[colorMode]}>
-        &copy; 2023 Prajwal S Venkateshmurthy. All rights reserved.
+        &copy; Copyright 2024 Prajwal Murthy
       </Center>
     </Stack>
   );

@@ -5,22 +5,16 @@ import {
   Flex,
   Grid,
   GridItem,
-  Heading,
   Icon,
   Image,
   Link,
-  List,
-  ListIcon,
-  ListItem,
-  Tag,
   Text,
   Tooltip,
-  color,
   useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 import StackWithTitleWrapper from "./StackWithTitleWrapper";
-import { ChevronRightIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
 import { primaryBackgroundColor, primaryDarkColor } from "../styles/theme";
 import { skillIconMap } from "../data/content";
@@ -51,7 +45,7 @@ const ProjectsData = [
     content: [
       "A platform for finding and connecting with startups, sponsors and investors.",
     ],
-    tags: ["Typescript", "NextJs", "OpenAI API", "Elastic Search",  "SERP API", "Radix UI", "Leaflet", "PostgreSQL"],
+    tags: ["Typescript", "NextJs", "OpenAI API", "Elastic Search", "SERP API", "Radix UI", "Leaflet", "PostgreSQL"],
     githubURI: "https://github.com/Prajwal-S-Venkatesh/StartupSync"
   },
   {
@@ -99,7 +93,7 @@ const ProjectsData = [
     tags: ["HTML5", "CSS3", "Javascript"],
     githubURI: "https://github.com/Prajwal-S-Venkatesh/Play-On-Scroll"
   },
- 
+
 ];
 
 const Work = ({ id, sectionIndex, sectionTitle }) => {
@@ -116,9 +110,16 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
       id={id}
       sectionIndex={sectionIndex}
       sectionTitle={sectionTitle}
-      maxWidth="calc(100vw - 200px)"
+      maxWidth={{
+        base: "calc(100vw - 200px)",
+        xs: "100%",
+        sm: "100%",
+      }}
+      display={{
+        base: "block",
+        xs: "contents",
+      }}
     >
-
       <Grid w="100%" h="100%" templateColumns={["1fr", "1fr", "1fr", "1fr", "1fr 1fr", "1fr 1fr 1fr"]} gap={6}>
         {ProjectsData.map((project, index) => (
           <GridItem
@@ -133,7 +134,15 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
           >
             <Box
               w="100%"
-              h="340px"
+              sx={{
+                height: {
+                  xs: "280px",
+                  sm: "250px",
+                  md: "300px",
+                  lg: "350px",
+                  xl: "400px",
+                }
+              }}
               p="1"
               zIndex="2"
               overflow="hidden"
@@ -148,7 +157,7 @@ const Work = ({ id, sectionIndex, sectionTitle }) => {
               display="flex"
               justifyContent="center"
             >
-              <Image src={project.imgURI} alt={project.title} width={["340px", "340px", "340px", "340px", "280px", "280px", "380px"]} bottom={0} position="absolute" borderRadius="16px 16px 0 0" />
+              <Image src={project.imgURI} alt={project.title} width={["250px", "280px", "340px", "340px", "280px", "280px", "380px"]} bottom={0} position="absolute" borderRadius="16px 16px 0 0" />
             </Box>
 
             <Text ml={1} mt={8} as="h1" color="#fff" fontSize="26px" fontWeight="bold">

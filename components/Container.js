@@ -137,7 +137,7 @@ const Container = ({ children }) => {
 
         <FlexBox display="flex" gap={4}>
           <GradientButton
-            display={["none", "block", "Block", "block"]}
+            display={["none", "none", "block", "Block", "block"]}
           >RESUME</GradientButton>
 
           {/* <DarkModeSwitch /> */}

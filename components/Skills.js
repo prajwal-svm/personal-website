@@ -36,7 +36,7 @@ const Skills = ({ id }) => {
         >
             <Box
                 id={id}
-                maxWidth="calc(100vw - 200px)"
+                maxWidth="100%"
                 mx="auto"
                 height="100%"
             >
