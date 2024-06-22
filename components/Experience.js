@@ -226,6 +226,7 @@ const Experience = ({ id, sectionIndex, sectionTitle }) => {
               onClick={() => setActive(data)}
               active={active.key === data.key}
               colorMode="dark"
+              className="company-name"
             >
               <Text
                 color={
