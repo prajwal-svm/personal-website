@@ -49,7 +49,7 @@ const Container = ({ children }) => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const handleDownloadResume = () => {
-    window.splitbee.track("Button Click", {
+    window?.splitbee?.track?.("Button Click", {
       type: "Resume",
     });
 
