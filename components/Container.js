@@ -20,7 +20,7 @@ import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaBusinessTime, FaHome, FaUser } from "react-icons/fa";
 import { MdComputer, MdOutlineEmail, MdWeb } from "react-icons/md";
 import Footer from "./Footer";
-import { CONTAINER_DATA } from "../data/content";
+import { CONTAINER_DATA, RESUME_URI } from "../data/content";
 import { primaryDarkColor } from "../styles/theme";
 
 const LinksToIcon = {
