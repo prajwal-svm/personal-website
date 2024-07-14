@@ -44,6 +44,13 @@ export default function Index() {
 
     });
 
+    if (
+      localStorage?.getItem("chakra-ui-color-mode") === 'light'
+    ) {
+      localStorage?.setItem("chakra-ui-color-mode", "dark");
+      window.location.reload();
+    }
+
     if (colorMode && localStorage?.getItem("chakra-ui-color-mode")) {
       return setDarkMode(false);
     }
@@ -53,7 +60,7 @@ export default function Index() {
     ) {
       localStorage?.setItem("chakra-ui-color-mode", "dark");
       window.location.reload();
-    }
+    } 
 
     return () => {
       sections.forEach((section) => {
