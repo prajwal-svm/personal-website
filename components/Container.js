@@ -138,6 +138,7 @@ const Container = ({ children }) => {
         <FlexBox display="flex" gap={4}>
           <GradientButton
             display={["none", "none", "block", "Block", "block"]}
+            onClick={handleDownloadResume}
           >RESUME</GradientButton>
 
           {/* <DarkModeSwitch /> */}
