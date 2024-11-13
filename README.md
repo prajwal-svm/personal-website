@@ -40,7 +40,7 @@ Explore my personal website repository, built using Next.js and Chakra UI. This 
 
 This project is open-sourced under the MIT License 🥳. You are welcome to clone the repository, but please remember to include the [LICENSE](LICENSE) file when using my code. And don't forget to show your support by giving this repository a ⭐!
 
-🚀 **[Visit My Website](https://prajwalsv.dev/)**
+🚀 **[Visit My Website](https://prajwal.me/)**
 
 <!--
 ## 💅 Colors
