@@ -1,6 +1,6 @@
 <p align="center">
   <img width='100' height='100' src="public/android-chrome-192x192.png" />
-  <h1 align="center">Prajwal S Venkatesh</h1>
+  <h1 align="center">Prajwal SV Murthy</h1>
 </p>
 
 ![www prajwalsv dev_(iPad Pro)](https://github.com/Prajwal-S-Venkatesh/personal-website/assets/53730619/9196d015-b408-401c-990d-48030cd28ad9)
